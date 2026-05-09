@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="pl">
 <head>
@@ -254,9 +255,18 @@
 
     /* === Brand mark + wordmark === */
     .brand-link { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
-    .brand-mark { display: block; flex: none; overflow: hidden; }
-    a.brand-link { overflow: hidden; }
-    .brand-mark-wrap { width: 64px; height: 64px; overflow: hidden; flex: none; display: inline-block; border-radius: 0; }
+    .brand-mark {
+      display: block;
+      flex: none;
+      width: 56px;
+      height: 56px;
+      background-image: url('img/logo-mark.png');
+      background-size: 260% auto;
+      background-position: center 60%;
+      background-repeat: no-repeat;
+    }
+    .footer .brand-mark { width: 64px; height: 64px; }
+    @media (max-width: 700px) { .brand-mark { width: 44px; height: 44px; } }
     .brand-word { display: inline-flex; flex-direction: column; line-height: 1; gap: 4px; font-family: var(--display); }
     .brand-word-top { font-size: 10px; letter-spacing: 0.26em; font-weight: 700; color: var(--ink-mute); text-transform: uppercase; }
     .brand-word-bot { font-size: 20px; letter-spacing: -0.025em; font-weight: 800; color: var(--ink); }
@@ -341,7 +351,6 @@
 <nav class="nav nav-wide">
   <div class="nav-row">
     <a href="#top" class="brand brand-link" aria-label="Studio Bajek">
-      <img class="brand-mark" src="img/logo-mark.png" alt="" style="width:64px;height:64px;object-fit:cover;object-position:center 62%;transform:scale(2.6);transform-origin:center;" />
       <span class="brand-word">
         <span class="brand-word-top">Studio</span>
         <span class="brand-word-bot">Bajek<em>.</em></span>
@@ -763,7 +772,6 @@
   <div class="shell footer-row">
     <div style="max-width: 320px;">
       <a href="#top" class="brand brand-link" aria-label="Studio Bajek">
-        <img class="brand-mark" src="img/logo-mark.png" alt="" style="width:72px;height:72px;object-fit:cover;object-position:center 62%;transform:scale(2.6);transform-origin:center;" />
         <span class="brand-word">
           <span class="brand-word-top">Studio</span>
           <span class="brand-word-bot">Bajek<em>.</em></span>
@@ -798,55 +806,6 @@
   </div>
 </footer>
 
-<!-- Logo switcher -->
-<div class="font-switcher" style="bottom: 76px;">
-  <span class="label">Logo</span>
-  <button data-logo="A" class="active">A · Słuchawki</button>
-  <button data-logo="B">B · Dymek</button>
-  <button data-logo="C">C · Play</button>
-</div>
 
-<!-- Font switcher (variant preview) -->
-<div class="font-switcher">
-  <span class="label">Font</span>
-  <button data-font="DM Sans" class="active">DM Sans</button>
-  <button data-font="Poppins">Poppins</button>
-  <button data-font="Sora">Nexa</button>
-  <button data-font="Montserrat">Montserrat</button>
-</div>
-<script>
-  document.querySelectorAll('.font-switcher button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const font = btn.dataset.font;
-      document.documentElement.style.setProperty('--display', `"${font}", system-ui, sans-serif`);
-      document.documentElement.style.setProperty('--body', `"${font}", system-ui, sans-serif`);
-      document.documentElement.style.setProperty('--hand', `"${font}", system-ui, sans-serif`);
-      document.querySelectorAll('.font-switcher button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-</script>
-
-<script>
-  const logoVariants = {
-    A: '<img class="brand-mark" src="img/logo-mark.png" alt="" style="width:%Spx;height:%Spx;object-fit:contain;" />',
-    B: '<svg class="brand-mark" width="%S" height="%S" viewBox="0 0 44 44" fill="none"><path d="M5 13 q0 -8 8 -8 h18 q8 0 8 8 v9 q0 8 -8 8 h-12 l-8 7 v-7 q-6 -1 -6 -8 z" fill="#1F2A44"/><path d="M22 11 l1.7 3.5 l3.5 1.7 l-3.5 1.7 l-1.7 3.5 l-1.7 -3.5 l-3.5 -1.7 l3.5 -1.7 z" fill="#F2B23A"/></svg>',
-    C: '<svg class="brand-mark" width="%S" height="%S" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" fill="#C25543"/><path d="M17 13.5 L32 22 L17 30.5 Z" fill="#F6EBD2"/></svg>'
-  };
-  function applyLogo(key){
-    document.querySelectorAll('.brand-link').forEach(link => {
-      const size = link.closest('.footer') ? 96 : 88;
-      const oldMark = link.querySelector('.brand-mark');
-      if (oldMark) oldMark.outerHTML = logoVariants[key].replaceAll('%S', size);
-    });
-  }
-  document.querySelectorAll('[data-logo]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      applyLogo(btn.dataset.logo);
-      document.querySelectorAll('[data-logo]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-</script>
 </body>
 </html>
