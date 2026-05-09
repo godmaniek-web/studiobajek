@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Miśka i Ptyś — wszystkie odcinki · Studio Bajek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" />
+<link rel="stylesheet" href="../styles-nocna.css" />
+<style>
+  /* === Paper theme override (matches index.html) === */
+  :root {
+    --display: "DM Sans", system-ui, sans-serif;
+    --body:    "DM Sans", system-ui, sans-serif;
+
+    --paper:       #F6EBD2;
+    --paper-deep:  #ECDFC0;
+    --paper-warm:  #FBF3E1;
+    --ink:         #1F2A44;
+    --ink-soft:    rgba(31, 42, 68, 0.78);
+    --ink-mute:    rgba(31, 42, 68, 0.5);
+    --line:        rgba(31, 42, 68, 0.14);
+    --line-strong: rgba(31, 42, 68, 0.28);
+  }
+  html, body { background: var(--paper) !important; color: var(--ink); }
+  body { background-image: none !important; font-family: var(--body); font-weight: 500; }
+  body::before { display: none !important; }
+
+  h1, h2, h3, h4, h5 { color: var(--ink); font-weight: 700; letter-spacing: -0.025em; font-family: var(--display); }
+  h1 em, h2 em, h3 em { color: var(--brick); font-weight: 700; font-style: normal; }
+  p { color: var(--ink-soft); }
+
+  .section-eyebrow { color: var(--brick); font-weight: 700; }
+  .section-eyebrow::before { background: var(--brick); }
+
+  /* Wide nav — matches index */
+  .nav { background: rgba(246, 235, 210, 0.92); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
+  .nav .nav-row {
+    max-width: none; width: 100%;
+    padding: 22px 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 48px;
+  }
+  .brand { display: inline-flex; align-items: center; gap: 14px; color: var(--ink); font-style: normal; font-weight: 800; }
+  .brand-mark-img { width: 48px; height: 48px; object-fit: contain; }
+  .brand-word { display: inline-flex; flex-direction: column; line-height: 0.95; font-family: var(--display); }
+  .brand-word-top { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; opacity: 0.7; }
+  .brand-word-bot { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+  .brand-word-bot em { color: var(--brick); font-style: normal; }
+  .nav-links { flex: 1; display: flex; justify-content: center; gap: 44px; font-size: 15px; font-weight: 600; color: var(--ink-soft); }
+  .nav-links a { position: relative; padding: 6px 0; transition: color .2s ease; }
+  .nav-links a::after { content: ""; position: absolute; left: 50%; bottom: -2px; width: 0; height: 2px; background: var(--brick); transform: translateX(-50%); transition: width .25s ease; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-actions { display: flex; gap: 10px; }
+  .nav-actions .btn { padding: 12px 22px; font-weight: 700; color: var(--ink); border-color: var(--line-strong); background: transparent; }
+  .nav-actions .btn:hover { border-color: var(--ink); }
+  @media (max-width: 1100px) { .nav .nav-row { padding: 18px 32px; gap: 24px; } .nav-links { gap: 28px; } }
+  @media (max-width: 900px) { .nav .nav-row { padding: 16px 20px; } .nav-links { display: none; } }
+
+  /* Page hero */
+  .page-hero { padding: 90px 28px 60px; text-align: center; max-width: 880px; margin: 0 auto; }
+  .page-hero .back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 28px; }
+  .page-hero .back:hover { color: var(--brick); }
+  .page-hero h1 { font-size: clamp(48px, 6vw, 88px); letter-spacing: -0.035em; }
+  .page-hero .lead { margin: 24px auto 0; max-width: 620px; font-size: 18px; line-height: 1.65; color: var(--ink-soft); }
+
+  .platforms-row { display: inline-flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 36px; padding: 10px 22px; background: var(--paper-warm); border: 1px solid var(--line); border-radius: 999px; }
+  .platforms-label { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); margin-right: 6px; }
+  .platform-pill { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px 8px 8px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); color: var(--ink); font-size: 14px; font-weight: 600; transition: border-color .2s ease, transform .15s ease; }
+  .platform-pill:hover { border-color: var(--brick); transform: translateY(-1px); }
+  .platform-pill .logo { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; }
+
+  /* Episode list */
+  .ep-list { max-width: 880px; margin: 0 auto; padding: 56px 28px 120px; display: flex; flex-direction: column; gap: 16px; }
+  .ep-row {
+    display: grid; grid-template-columns: 96px 1fr auto;
+    gap: 22px; align-items: center;
+    padding: 18px;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .ep-row:hover { transform: translateX(2px); border-color: var(--brick); box-shadow: 0 10px 28px rgba(31,42,68,0.08); }
+  .ep-row .row-art { width: 96px; height: 96px; border-radius: 14px; overflow: hidden; background: var(--paper-deep); }
+  .ep-row .row-art img, .ep-row .row-art svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ep-row .row-meta { display: flex; gap: 10px; align-items: center; font-size: 12px; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 6px; letter-spacing: 0.04em; flex-wrap: wrap; }
+  .ep-row .row-num { font-family: var(--display); font-style: normal; font-weight: 800; font-size: 13px; color: var(--brick); letter-spacing: 0; }
+  .ep-row h3 { font-family: var(--display); font-size: 22px; font-weight: 700; line-height: 1.2; color: var(--ink); margin: 0 0 6px; }
+  .ep-row p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; margin: 0; max-width: 560px; }
+  .ep-row .row-actions { display: flex; gap: 8px; flex: none; }
+  .ep-row .row-icon { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; transition: transform .15s ease; }
+  .ep-row .row-icon.spotify { background: #1DB954; }
+  .ep-row .row-icon.youtube { background: #E33; }
+  .ep-row .row-icon:hover { transform: scale(1.08); }
+  .ep-tag { display: inline-block; padding: 3px 8px; border-radius: 999px; background: var(--brick); color: var(--paper-warm); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; }
+  .ep-tag.first { background: var(--ink); color: var(--paper-warm); }
+
+  .placeholder-cover {
+    width: 100%; height: 100%;
+    display: grid; place-items: center;
+    background: linear-gradient(180deg, var(--paper-deep) 0%, #d9c89e 100%);
+    color: var(--ink);
+    font-family: var(--display);
+    text-align: center;
+    font-size: 13px; font-weight: 600;
+    line-height: 1.2;
+    padding: 8px;
+  }
+  .placeholder-cover .num { font-size: 22px; color: var(--brick); display: block; font-weight: 800; margin-bottom: 4px; }
+
+  /* Footer */
+  .footer { background: var(--paper-warm); border-top: 1px solid var(--line); padding: 32px 28px; margin-top: 60px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; max-width: 1240px; margin: 0 auto; color: var(--ink-mute); font-size: 13px; }
+  .footer-bottom a { color: var(--ink-soft); }
+  .footer-bottom a:hover { color: var(--brick); }
+
+  @media (max-width: 720px) {
+    .ep-row { grid-template-columns: 72px 1fr; }
+    .ep-row .row-art { width: 72px; height: 72px; }
+    .ep-row .row-actions { grid-column: 2; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-row">
+    <a href="../index.html" class="brand">
+      <img class="brand-mark-img" src="../img/logo-mark.png" alt="" />
+      <span class="brand-word">
+        <span class="brand-word-top">Studio</span>
+        <span class="brand-word-bot">Bajek<em>.</em></span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html#serie">Nasze bajki</a>
+      <a href="../index.html#o-serii">Filozofia</a>
+      <a href="../index.html#o-mnie">O mnie</a>
+      <a href="mailto:czesc@studiobajek.pl">Kontakt</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn" href="../index.html">← Strona główna</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <a class="back" href="../index.html#miska">← Wszystkie serie</a>
+  <div class="section-eyebrow" style="justify-content: center;">Seria 01 · Codzienność · 3–5 lat</div>
+  <h1>Miśka <em>i Ptyś.</em></h1>
+  <p class="lead">
+    Mała Miśka, lisek-pluszak Ptyś, kotka Figa i braciszek Stefanek. Każdy odcinek to jedna codzienna sytuacja — bez magii, bez krzyku, opowiedziana wolnym, miękkim głosem.
+  </p>
+  <div class="platforms-row">
+    <span class="platforms-label">Słuchaj na</span>
+    <a class="platform-pill" href="https://open.spotify.com/show/miskaiptys" target="_blank" rel="noopener">
+      <span class="logo" style="background:#1DB954"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></span>
+      Spotify
+    </a>
+    <a class="platform-pill" href="https://youtube.com/@miskaiptys" target="_blank" rel="noopener">
+      <span class="logo" style="background:#E33"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></span>
+      YouTube
+    </a>
+  </div>
+</section>
+
+<div class="ep-list">
+
+  <article class="ep-row">
+    <div class="row-art"><img src="../img/ep1.png" alt="" /></div>
+    <div>
+      <div class="row-meta"><span class="ep-tag first">Pierwszy</span><span class="row-num">Odc. 1</span><span>·</span><span>12 min</span></div>
+      <h3>Kurtka</h3>
+      <p>Najtrudniejsza rzecz na świecie: założyć kurtkę, kiedy się nie chce wychodzić. Z piosenką w środku.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#E8C880"/><rect x="20" y="40" width="60" height="45" fill="#C25543"/><polygon points="15,40 50,18 85,40" fill="#8a3a2a"/><rect x="45" y="55" width="12" height="30" fill="#1F2A44"/><rect x="28" y="50" width="10" height="10" fill="#FBF3E1"/><rect x="62" y="50" width="10" height="10" fill="#FBF3E1"/></svg></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 2</span><span>·</span><span>13 min</span></div>
+      <h3>Pierwszy dzień w przedszkolu</h3>
+      <p>Nowe buty, nowe twarze, nowe zapachy. Ptyś czeka w plecaku — na wszelki wypadek.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><img src="../img/ep3.png" alt="" /></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 3</span><span>·</span><span>11 min</span></div>
+      <h3>Najgorszy dzień</h3>
+      <p>Wszystko poszło nie tak. Rozlany kubek, zepsuty rysunek, deszcz. Ptyś milczy i jest blisko.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><img src="../img/ep4.png" alt="" /></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 4</span><span>·</span><span>14 min</span></div>
+      <h3>Ptyś jedzie autobusem</h3>
+      <p>Pierwsza długa podróż MZK. Ptyś siedzi mocno przytulony — żeby nie zgubić się w tłumie.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#1F2A44"/><circle cx="75" cy="30" r="14" fill="#F2B23A"/><circle cx="68" cy="28" r="12" fill="#1F2A44"/><circle cx="22" cy="22" r="1.5" fill="#FBF3E1"/><circle cx="40" cy="15" r="1" fill="#FBF3E1"/><circle cx="15" cy="45" r="1" fill="#FBF3E1"/><circle cx="50" cy="40" r="1" fill="#FBF3E1"/><ellipse cx="50" cy="82" rx="30" ry="12" fill="#C25543"/><circle cx="42" cy="75" r="4" fill="#1F2A44"/><circle cx="58" cy="75" r="4" fill="#1F2A44"/></svg></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 5</span><span>·</span><span>16 min</span></div>
+      <h3>Co śni się Ptysiowi?</h3>
+      <p>Miśka próbuje zgadnąć, co dzieje się pod zamkniętymi oczami pluszaka. Wymyśla świat.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#9CB892"/><path d="M10 70 Q50 50 90 70 L90 90 L10 90 Z" fill="#6E8A66"/><circle cx="55" cy="60" r="22" fill="#C25543"/><circle cx="55" cy="60" r="15" fill="none" stroke="#8a3a2a" stroke-width="3"/><circle cx="55" cy="60" r="8" fill="none" stroke="#8a3a2a" stroke-width="2"/><path d="M30 65 Q22 55 28 50 Q35 48 35 55 L35 65 Z" fill="#E8C8B0"/><circle cx="30" cy="52" r="1.5" fill="#1F2A44"/></svg></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 6</span><span>·</span><span>13 min</span></div>
+      <h3>Ślimak na chodniku</h3>
+      <p>Mała, ważna decyzja: zostawić, czy przenieść? Miśka uczy się szanować to, co małe.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#FBF3E1"/><rect x="30" y="25" width="40" height="55" fill="#C25543" rx="4"/><rect x="43" y="35" width="14" height="35" fill="#FBF3E1"/><rect x="35" y="45" width="30" height="6" fill="#FBF3E1"/><circle cx="50" cy="15" r="6" fill="#1F2A44"/></svg></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 7</span><span>·</span><span>11 min</span></div>
+      <h3>U pana doktora</h3>
+      <p>Ptyś też idzie na wizytę. Razem łatwiej znieść stetoskop, plaster i białe ściany.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#7A8FA8"/><ellipse cx="30" cy="30" rx="22" ry="10" fill="#5A6F88"/><ellipse cx="65" cy="22" rx="18" ry="8" fill="#5A6F88"/><line x1="20" y1="45" x2="15" y2="60" stroke="#FBF3E1" stroke-width="1.5"/><line x1="40" y1="45" x2="35" y2="60" stroke="#FBF3E1" stroke-width="1.5"/><line x1="60" y1="42" x2="55" y2="57" stroke="#FBF3E1" stroke-width="1.5"/><line x1="80" y1="40" x2="75" y2="55" stroke="#FBF3E1" stroke-width="1.5"/><path d="M30 95 Q50 60 70 95 Z" fill="#1F2A44"/><rect x="45" y="60" width="10" height="35" fill="#1F2A44"/></svg></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 8</span><span>·</span><span>12 min</span></div>
+      <h3>Tata, deszcz i kałuże</h3>
+      <p>Sobotni spacer, który miał być krótki. Skończył się błotem na butach i czekoladą.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#F2B23A"/><rect x="0" y="75" width="100" height="25" fill="#C28a40"/><line x1="30" y1="15" x2="30" y2="75" stroke="#1F2A44" stroke-width="3"/><line x1="70" y1="15" x2="70" y2="75" stroke="#1F2A44" stroke-width="3"/><line x1="30" y1="15" x2="70" y2="15" stroke="#1F2A44" stroke-width="3"/><rect x="38" y="50" width="24" height="10" fill="#C25543" rx="2"/><line x1="40" y1="15" x2="40" y2="50" stroke="#FBF3E1" stroke-width="1"/><line x1="60" y1="15" x2="60" y2="50" stroke="#FBF3E1" stroke-width="1"/></svg></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 9</span><span>·</span><span>13 min</span></div>
+      <h3>Nieznajomy chłopiec na placu zabaw</h3>
+      <p>Pierwsza próba nawiązania znajomości. Trochę się udaje. Trochę nie.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#A8C8D8"/><path d="M10 55 Q25 50 40 55 Q55 60 70 55 Q85 50 95 55 L95 90 L10 90 Z" fill="#5A8AA8"/><ellipse cx="50" cy="45" rx="22" ry="8" fill="#FBF3E1" opacity="0.7"/><circle cx="35" cy="40" r="4" fill="#FBF3E1"/><circle cx="65" cy="38" r="6" fill="#FBF3E1"/><circle cx="50" cy="32" r="3" fill="#FBF3E1"/></svg></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 10</span><span>·</span><span>10 min</span></div>
+      <h3>Wieczorna kąpiel</h3>
+      <p>Ptyś nie lubi wody. Miśka nie lubi mycia włosów. Razem wymyślają sposób.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#C25543"/><polygon points="50,20 35,50 48,50 38,80 65,42 52,42 62,20" fill="#F2B23A"/></svg></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 11</span><span>·</span><span>11 min</span></div>
+      <h3>Mała złość, duża złość</h3>
+      <p>Kiedy w środku robi się gorąco, a słowa nie chcą wyjść. Mama uczy oddychać.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#E8C880"/><circle cx="50" cy="50" r="30" fill="#C28a40"/><circle cx="40" cy="45" r="3" fill="#5a3a20"/><circle cx="60" cy="42" r="3" fill="#5a3a20"/><circle cx="55" cy="58" r="3" fill="#5a3a20"/><circle cx="38" cy="60" r="3" fill="#5a3a20"/><circle cx="63" cy="60" r="3" fill="#5a3a20"/></svg></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 12</span><span>·</span><span>15 min</span></div>
+      <h3>U babci pachnie ciastkami</h3>
+      <p>Wizyta w domu, w którym wszystko jest większe, wolniejsze i pachnie inaczej.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#FBF3E1"/><rect x="10" y="30" width="80" height="50" fill="#C25543"/><rect x="15" y="40" width="22" height="30" fill="#FBF3E1"/><rect x="42" y="40" width="22" height="30" fill="#FBF3E1"/><rect x="68" y="40" width="22" height="30" fill="#FBF3E1"/><circle cx="50" cy="55" r="4" fill="#1F2A44"/></svg></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 13</span><span>·</span><span>14 min</span></div>
+      <h3>Stefanek się gubi w sklepie</h3>
+      <p>Cztery sekundy bez Stefanka i serce stanęło. Bajka o tym, że dorośli też się boją.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><img src="../img/ep14.png" alt="" /></div>
+    <div>
+      <div class="row-meta"><span class="row-num">Odc. 14</span><span>·</span><span>12 min</span></div>
+      <h3>Wieczór bez bajki</h3>
+      <p>Czasem wystarczy ciemność, ciepły koc i ktoś bliski tuż obok.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+  <article class="ep-row">
+    <div class="row-art"><img src="../img/ep15.png" alt="" /></div>
+    <div>
+      <div class="row-meta"><span class="ep-tag">Nowy</span><span class="row-num">Odc. 15</span><span>·</span><span>13 min</span></div>
+      <h3>Figa potrzebuje pomocy</h3>
+      <p>Kotka chowa się pod kanapą i nie chce wyjść. Miśka próbuje pomóc — ale nie wie jak.</p>
+    </div>
+    <div class="row-actions">
+      <a class="row-icon spotify" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 10 q5 -2 10 1 M7.5 13 q4 -1.5 8 0.5 M8 16 q3 -1 6 0.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" /></svg></a>
+      <a class="row-icon youtube" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5 v14 l12 -7 z" /></svg></a>
+    </div>
+  </article>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div>© 2026 Studio Bajek · studiobajek.pl</div>
+    <div><a href="../index.html">Strona główna</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
