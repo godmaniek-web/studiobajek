@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /serie/polityka-prywatnosci.html
+Disallow: /serie/regulamin.html
+
+Sitemap: https://studiobajek.pl/sitemap.xml
