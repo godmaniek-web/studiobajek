@@ -2,19 +2,21 @@
 <!DOCTYPE html><html lang="pl"><head>
 
 
+
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <!-- Primary SEO -->
   <title>Studio Bajek — ciepłe bajki audio dla dzieci | Spotify, YouTube</title>
-  <meta name="description" content="Studio Bajek to ciepłe bajki audio dla dzieci 3–7 lat. Miśka i Ptyś, Bruno i Hektor, Otto i Cień — trzy serie o codziennych emocjach, przygodach i odrobinie magii. Słuchaj na Spotify i YouTube.">
+  <meta name="description" content="Studio Bajek to ciepłe bajki audio dla dzieci 3–8 lat. Miśka i Ptyś, Bruno i Hektor, Atlas Małych Dziwności — trzy serie o codziennych emocjach, przygodach i odrobinie magii. Słuchaj na Spotify i YouTube.">
   <meta name="keywords" content="bajki dla dzieci, bajki audio, bajki na dobranoc, audiobook dla dzieci, podcast dla dzieci, Miśka i Ptyś, Studio Bajek, bajki Spotify, bajki YouTube, bajki 3 lata, bajki 5 lat">
   <meta name="author" content="Michał · Studio Bajek">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <link rel="canonical" href="https://studiobajek.pl/">
   <meta name="theme-color" content="#1F2A44">
-  <link rel="icon" type="image/png" href="img/okladka.png">
-  <link rel="apple-touch-icon" href="img/okladka.png">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/favicon.png">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -31,7 +33,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Studio Bajek — ciepłe bajki audio dla dzieci">
-  <meta name="twitter:description" content="Trzy serie audio dla dzieci 3–7 lat. Słuchaj na Spotify i YouTube.">
+  <meta name="twitter:description" content="Trzy serie audio dla dzieci 3–8 lat. Słuchaj na Spotify i YouTube.">
   <meta name="twitter:image" content="https://studiobajek.pl/img/postacie.png">
 
   <!-- Structured data: Organization + WebSite + CreativeWorkSeries x3 -->
@@ -44,12 +46,12 @@
         "@id": "https://studiobajek.pl/#org",
         "name": "Studio Bajek",
         "url": "https://studiobajek.pl/",
-        "logo": "https://studiobajek.pl/img/okladka.png",
+        "logo": "https://studiobajek.pl/img/favicon.png",
         "founder": { "@type": "Person", "name": "Michał" },
         "description": "Niezależne studio tworzące ciepłe bajki audio dla dzieci.",
         "sameAs": [
           "https://open.spotify.com/show/033dj3n8O8wcOK8OWzlUU9",
-          "https://www.youtube.com/@studiobajek"
+          "https://www.youtube.com/@StudioBajek"
         ]
       },
       {
@@ -83,13 +85,13 @@
       },
       {
         "@type": "CreativeWorkSeries",
-        "name": "Otto i Cień",
+        "name": "Atlas Małych Dziwności",
         "url": "https://studiobajek.pl/serie/atlas-malych-dziwnosci.html",
         "publisher": { "@id": "https://studiobajek.pl/#org" },
         "inLanguage": "pl-PL",
         "audience": { "@type": "PeopleAudience", "suggestedMinAge": 5, "suggestedMaxAge": 7 },
         "genre": "Bajki audio dla dzieci",
-        "description": "Otto i jego cień — spokojne, magiczne historie o emocjach i wyobraźni."
+        "description": "Spokojne, magiczne opowieści o niezwykłych miejscach, stworzeniach i sekretach ukrytych obok codziennego świata."
       }
     ]
   }
@@ -101,6 +103,7 @@
   <style>
     /* === Paper theme override (warm cream) — applied on top of styles-nocna.css === */
     :root {
+      --band: #2C1F12;
       --display: "DM Sans", system-ui, sans-serif;
       --body:    "DM Sans", system-ui, sans-serif;
       --hand:    "DM Sans", system-ui, sans-serif;
@@ -167,8 +170,9 @@
     }
     .hero-platforms .label { letter-spacing: 0.06em; }
     .hero-platforms .logos { display: inline-flex; align-items: center; gap: 14px; }
-    .hero-platforms .logos img { height: 22px; width: auto; display: block; }
-    .hero-platforms .logos img.spot { height: 22px; }
+    .hero-platforms .logos a { display: inline-flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; font-weight: 600; letter-spacing: 0.01em; transition: opacity 0.18s ease; }
+    .hero-platforms .logos a:hover { opacity: 0.7; }
+    .hero-platforms .logos svg { height: 18px; width: auto; display: block; }
     .hero-platforms .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-mute); }
 
     /* Section / chunks */
@@ -241,7 +245,7 @@
     .footer-col h5 { color: var(--brick); }
     .footer-col a { color: var(--ink-soft); }
     .footer-col a:hover { color: var(--ink); }
-    .footer-bottom { color: var(--ink-mute); border-top-color: var(--line); }
+    .footer-bottom { color: var(--ink-mute); border-top: 0 !important; padding-top: 0 !important; margin-top: 0 !important; }
     @media (max-width: 700px) {
       .footer .footer-row { grid-template-columns: 1fr !important; gap: 32px !important; padding-left: 24px !important; padding-right: 24px !important; }
       .footer .footer-row > div:first-child { max-width: none !important; text-align: left; }
@@ -260,8 +264,15 @@
     .lead-block { max-width: 720px; }
 
     /* === Brand logo image === */
-    .brand-logo { display: block; height: 56px; width: auto; }
-    .brand-link { display: inline-flex; align-items: center; }
+    .brand-logo-img { display: block; height: 96px; width: auto; }
+    .nav .brand-logo-img { height: 88px; }
+    .footer .brand-logo-img { height: 96px; }
+    .nav.nav-wide .brand-logo-img.dark-hide { display: none !important; }
+    .nav:not(.nav-wide) .brand-logo-img.light-hide { display: none !important; }
+    @media (max-width: 700px) {
+      .nav .brand-logo-img { height: 64px; }
+      .footer .brand-logo-img { height: 72px; }
+    }
 
     /* === Fix readability on forest / midnight series blocks (now on paper) === */
     .series-block.forest, .series-block.midnight {
@@ -272,11 +283,11 @@
     .series-block.midnight h1, .series-block.midnight h2, .series-block.midnight h3 { color: var(--ink) !important; }
     .series-block.forest p, .series-block.midnight p { color: var(--ink-soft) !important; }
     .series-block.forest h2 em { color: #3f7a64 !important; }
-    .series-block.midnight h2 em { color: #6b5dbf !important; }
+    .series-block.midnight h2 em { color: #7d4f9a !important; }
     .series-block.forest .section-eyebrow { color: #3f7a64 !important; }
     .series-block.forest .section-eyebrow::before { background: #3f7a64 !important; }
-    .series-block.midnight .section-eyebrow { color: #6b5dbf !important; }
-    .series-block.midnight .section-eyebrow::before { background: #6b5dbf !important; }
+    .series-block.midnight .section-eyebrow { color: #7d4f9a !important; }
+    .series-block.midnight .section-eyebrow::before { background: #7d4f9a !important; }
     .series-block.forest .cast-pill, .series-block.midnight .cast-pill {
       color: var(--ink) !important;
       background: rgba(31,42,68,0.06) !important;
@@ -285,7 +296,7 @@
     .series-block.forest .series-meta, .series-block.midnight .series-meta { border-top-color: var(--line) !important; }
     .series-block.forest .series-meta div, .series-block.midnight .series-meta div { color: var(--ink-mute) !important; }
     .series-block.forest .series-meta strong { color: #3f7a64 !important; }
-    .series-block.midnight .series-meta strong { color: #6b5dbf !important; }
+    .series-block.midnight .series-meta strong { color: #7d4f9a !important; }
     .series-block.forest .btn.lg:not(.primary),
     .series-block.midnight .btn.lg:not(.primary) { color: var(--ink) !important; border-color: var(--line-strong) !important; }
 
@@ -358,6 +369,130 @@
     .nav.nav-wide .nav-actions .btn { padding: 12px 22px; font-weight: 700; }
     @media (max-width: 1100px) { .nav.nav-wide .nav-row { padding: 18px 32px; gap: 24px; } .nav.nav-wide .nav-links { gap: 28px; } }
     @media (max-width: 900px) { .nav.nav-wide .nav-row { padding: 16px 20px; } }
+
+    /* === Chapter-style nav links === */
+    .nav.nav-wide .nav-chapters { gap: 44px !important; }
+    .nav.nav-wide .nav-chapters a {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 8px 0 10px;
+      position: relative;
+      font-weight: 600;
+    }
+    .nav.nav-wide .nav-chapters .ch-num {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: rgba(232, 160, 48, 0.85);
+      transition: color .25s ease, transform .25s ease;
+    }
+    .nav.nav-wide .nav-chapters .ch-label {
+      font-size: 16px;
+      letter-spacing: 0.005em;
+    }
+    /* Override default center-expand underline — chapter links draw left→right */
+    .nav.nav-wide .nav-chapters a::after {
+      left: 0 !important;
+      right: auto;
+      bottom: 0 !important;
+      width: 100% !important;
+      height: 1.5px !important;
+      transform: scaleX(0) !important;
+      transform-origin: left center;
+      background: #F2A663 !important;
+      transition: transform .35s cubic-bezier(.65, .05, .36, 1) !important;
+    }
+    .nav.nav-wide .nav-chapters a:hover::after,
+    .nav.nav-wide .nav-chapters a.is-active::after {
+      transform: scaleX(1) !important;
+    }
+    .nav.nav-wide .nav-chapters a:hover .ch-num,
+    .nav.nav-wide .nav-chapters a.is-active .ch-num {
+      color: #F2A663;
+    }
+    .nav.nav-wide .nav-chapters a.is-active .ch-label {
+      color: #FBF3E1 !important;
+    }
+    @media (max-width: 1100px) {
+      .nav.nav-wide .nav-chapters { gap: 32px !important; }
+      .nav.nav-wide .nav-chapters .ch-num { font-size: 12px; }
+    }
+    @media (max-width: 900px) {
+      .nav.nav-wide .nav-chapters .ch-num { display: none; }
+      .nav.nav-wide .nav-chapters { gap: 22px !important; }
+    }
+
+    /* === Mobile burger + drawer === */
+    .nav-burger {
+      display: none;
+      width: 44px; height: 44px;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 5px;
+      background: transparent; border: 0; padding: 0; margin-right: 4px;
+      cursor: pointer;
+    }
+    .nav-burger span {
+      display: block; width: 22px; height: 2px;
+      background: #FBF3E1; border-radius: 2px;
+      transition: transform .3s ease, opacity .2s ease;
+    }
+    .nav.nav-wide.is-open .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav.nav-wide.is-open .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav.nav-wide.is-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-drawer {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      background: var(--band);
+      border-top: 1px solid rgba(251,243,225,0.08);
+      box-shadow: 0 24px 48px -16px rgba(0,0,0,0.4);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s cubic-bezier(.65,.05,.36,1);
+    }
+    .nav.nav-wide.is-open .mobile-drawer { max-height: 80vh; }
+    .mobile-drawer-inner {
+      display: flex; flex-direction: column;
+      padding: 20px 28px 28px;
+      gap: 4px;
+    }
+    .md-link {
+      display: flex; align-items: baseline; gap: 14px;
+      padding: 18px 4px;
+      border-bottom: 1px solid rgba(251,243,225,0.08);
+      text-decoration: none;
+      font-family: var(--display);
+    }
+    .md-link:last-of-type { border-bottom: 0; }
+    .md-link .ch-num {
+      font-style: italic; font-weight: 400;
+      font-size: 15px; color: rgba(232, 160, 48, 0.85);
+      min-width: 28px;
+    }
+    .md-link .ch-label {
+      font-size: 22px; font-weight: 600; color: #FBF3E1;
+      letter-spacing: -0.01em;
+    }
+    .md-cta {
+      margin-top: 20px;
+      width: 100%;
+      justify-content: center;
+      padding: 16px 22px !important;
+      font-size: 16px;
+    }
+
+    @media (max-width: 760px) {
+      .nav-burger { display: inline-flex; }
+      .nav.nav-wide .nav-chapters,
+      .nav.nav-wide .nav-actions { display: none !important; }
+      .mobile-drawer { display: block; }
+      .nav.nav-wide .nav-row { justify-content: flex-start; gap: 12px; }
+      .nav.nav-wide .brand-link { margin-left: 0; }
+    }
 
     /* === Less air === */
     .hero { padding-bottom: 40px !important; }
@@ -481,51 +616,190 @@
       color: var(--ink-mute) !important;
       font-weight: 700 !important;
     }
+
+    /* === HERO + NAV: granatowy band na górze === */
+    .nav.nav-wide { background: var(--band) !important; border-bottom-color: rgba(251,243,225,0.08) !important; }
+    .nav.nav-wide .brand-logo .word,
+    .nav.nav-wide .brand-logo .pre { color: #FBF3E1 !important; }
+    .nav.nav-wide .brand-logo .word .dot { color: #F2A663 !important; }
+    .nav.nav-wide .nav-links a { color: rgba(251,243,225,0.78) !important; }
+    .nav.nav-wide .nav-links a:hover { color: #F2A663 !important; }
+    .nav.nav-wide .nav-links a::after { background: #F2A663 !important; }
+    .nav.nav-wide .nav-actions .btn.primary { background: #F2A663 !important; color: var(--band) !important; border-color: #F2A663 !important; }
+    .nav.nav-wide .nav-actions .btn.primary:hover { background: #E89048 !important; border-color: #E89048 !important; }
+
+    .hero.dark-band {
+      background: var(--band) !important;
+      color: #FBF3E1;
+      max-width: none !important;
+      width: 100%;
+      margin: 0 !important;
+      padding: 100px 28px 130px !important;
+    }
+    .hero.dark-band .lead-block { max-width: 1080px !important; margin: 0 auto !important; }
+    .hero.dark-band h1 {
+      color: #FBF3E1 !important;
+      font-size: clamp(48px, 7.4vw, 104px) !important;
+      line-height: 1.0 !important;
+      letter-spacing: -0.035em !important;
+      font-weight: 800 !important;
+    }
+    .hero.dark-band h1 em { color: #F2A663 !important; font-style: italic; }
+    .hero.dark-band .hero-platforms { background: rgba(251,243,225,0.08) !important; border-color: rgba(251,243,225,0.18) !important; color: rgba(251,243,225,0.78) !important; }
+    .hero.dark-band .hero-platforms .sep { background: rgba(251,243,225,0.4) !important; }
+    .hero.dark-band p { color: rgba(251,243,225,0.85) !important; }
+    .hero.dark-band p .brick-text { color: #F2A663 !important; font-weight: 700; }
+    .hero.dark-band .btn.primary { background: #F2A663 !important; color: var(--band) !important; border-color: #F2A663 !important; }
+    .hero.dark-band .btn.primary:hover { background: #E89048 !important; border-color: #E89048 !important; }
+    .hero.dark-band .btn:not(.primary) { color: #FBF3E1 !important; border-color: rgba(251,243,225,0.32) !important; }
+    .hero.dark-band .btn:not(.primary):hover { border-color: #FBF3E1 !important; }
+
+    /* === PER-SERIES ACCENTS — Miśka ceglany, Bruno mech, Atlas śliwka === */
+    .series-block.warm h2 em,
+    .series-block.warm .section-eyebrow,
+    .series-block.warm .series-meta strong { color: #C25543 !important; }
+    .series-block.warm .section-eyebrow::before { background: #C25543 !important; }
+    .series-block.warm .btn.primary { background: #C25543 !important; color: #FBF3E1 !important; border-color: #C25543 !important; }
+    .series-block.warm .series-cover { border-color: rgba(194,85,67,0.4) !important; }
+    .series-block.warm .cast-pill .av { background: #F2A663 !important; }
+
+    .series-block.forest h2 em,
+    .series-block.forest .section-eyebrow,
+    .series-block.forest .series-meta strong { color: #2f5e4f !important; }
+    .series-block.forest .section-eyebrow::before { background: #2f5e4f !important; }
+    .series-block.forest .series-cover { border-color: rgba(47,94,79,0.4) !important; }
+    .series-block.forest .cast-pill .av { background: #A8C9AE !important; }
+
+    .series-block.midnight h2 em,
+    .series-block.midnight .section-eyebrow,
+    .series-block.midnight .series-meta strong { color: #7d4f9a !important; }
+    .series-block.midnight .section-eyebrow::before { background: #7d4f9a !important; }
+    .series-block.midnight .btn.primary { background: #7d4f9a !important; color: #FBF3E1 !important; border-color: #7d4f9a !important; }
+    .series-block.midnight .series-cover { border-color: rgba(125,79,154,0.4) !important; }
+    .series-block.midnight .cast-pill .av { background: #C5A4D6 !important; }
+
+    /* === CYTAT ZAMYKAJĄCY (przed stopką) z artystycznym SVG cudzysłowem === */
+    .closing-quote {
+      background: var(--band);
+      color: #FBF3E1;
+      padding: 150px 28px 160px;
+      text-align: center;
+      position: relative;
+    }
+    .closing-quote .quote-mark {
+      display: block;
+      margin: 0 auto 44px;
+      width: 86px;
+      height: auto;
+      color: #F2A663;
+    }
+    .closing-quote blockquote {
+      max-width: 980px;
+      margin: 0 auto;
+      font-family: var(--display);
+      font-size: clamp(30px, 4.6vw, 60px);
+      line-height: 1.18;
+      font-weight: 500;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      color: #FBF3E1;
+      text-wrap: pretty;
+    }
+    .closing-quote blockquote em { color: #F2A663; font-style: italic; }
+    .closing-quote .closing-attr {
+      margin-top: 44px;
+      font-size: 12px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: rgba(251,243,225,0.55);
+      font-style: normal;
+    }
+    @media (max-width: 700px) {
+      .closing-quote { padding: 90px 22px 100px; }
+      .closing-quote .quote-mark { width: 60px; margin-bottom: 28px; }
+    }
+
+    /* === STOPKA — 2 kolumny === */
+    .footer .footer-row { grid-template-columns: 1.4fr 1fr !important; gap: 60px !important; }
+
+    /* === TILES — per-series identyfikacja kolorystyczna === */
+    .series-tile { transition: transform .3s ease, box-shadow .3s ease; }
+    .series-tile:nth-child(1) .tile-art { background: linear-gradient(180deg, #FBF3E1, #F4DBB5) !important; }
+    .series-tile:nth-child(2) .tile-art { background: linear-gradient(180deg, #EFE6CB, #D9D0AC) !important; }
+    .series-tile:nth-child(3) .tile-art { background: linear-gradient(180deg, #F7F0E5, #E8DDD0) !important; }
+    .series-tile:nth-child(1) .tile-art img { background: transparent !important; }
+    .series-tile:nth-child(2) .tile-art img { background: transparent !important; }
+    .series-tile:nth-child(3) .tile-art img { background: transparent !important; }
+    .series-tile:nth-child(1) .tile-eyebrow,
+    .series-tile:nth-child(1) .tile-cta { color: #C25543 !important; }
+    .series-tile:nth-child(2) .tile-eyebrow,
+    .series-tile:nth-child(2) .tile-cta { color: #2f5e4f !important; }
+    .series-tile:nth-child(3) .tile-eyebrow,
+    .series-tile:nth-child(3) .tile-cta { color: #7d4f9a !important; }
+    .series-tile:nth-child(1):hover { border-color: #C25543 !important; box-shadow: 0 22px 50px rgba(194,85,67,0.16) !important; }
+    .series-tile:nth-child(2):hover { border-color: #2f5e4f !important; box-shadow: 0 22px 50px rgba(47,94,79,0.16) !important; }
+    .series-tile:nth-child(3):hover { border-color: #7d4f9a !important; box-shadow: 0 22px 50px rgba(125,79,154,0.16) !important; }
   </style>
 </head>
-<body style="background-color: rgb(255, 174, 0);">
+<body style="">
 
 <nav class="nav nav-wide">
   <div class="nav-row">
+    <button class="nav-burger" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile-drawer">
+      <span></span><span></span><span></span>
+    </button>
     <a href="#top" class="brand brand-link" aria-label="Studio Bajek">
-      <span class="brand-logo">
-        <span class="pre">Studio</span>
-        <span class="word">Bajek<span class="dot">.</span></span>
-      </span>
+      <img class="brand-logo-img dark-hide" src="img/studio_bajek_wordmark_v2.svg" alt="Studio Bajek">
+      <img class="brand-logo-img light-hide" src="img/studio_bajek_wordmark_v2.svg" alt="Studio Bajek">
     </a>
-    <div class="nav-links">
-      <a href="#serie" style="margin: 0px;">Bajki</a>
-      <a href="#o-serii">Filozofia</a>
-      <a href="#o-mnie">O mnie</a>
-      <a href="/cdn-cgi/l/email-protection#aac9d0cfd9c9ead9dedfcec3c5c8cbc0cfc184dac6">Kontakt</a>
+    <div class="nav-links nav-chapters">
+      <a href="#serie" data-chapter="serie"><span class="ch-num">01</span><span class="ch-label">Bajki</span></a>
+      <a href="#o-serii" data-chapter="o-serii"><span class="ch-num">02</span><span class="ch-label">Filozofia</span></a>
+      <a href="#o-mnie" data-chapter="o-mnie"><span class="ch-num">03</span><span class="ch-label">O mnie</span></a>
+      <a href="mailto:czesc@studiobajek.pl"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
     </div>
     <div class="nav-actions">
       <a class="btn primary" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z"></path></svg></a>
     </div>
   </div>
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      <a href="#serie" class="md-link"><span class="ch-num">01</span><span class="ch-label">Bajki</span></a>
+      <a href="#o-serii" class="md-link"><span class="ch-num">02</span><span class="ch-label">Filozofia</span></a>
+      <a href="#o-mnie" class="md-link"><span class="ch-num">03</span><span class="ch-label">O mnie</span></a>
+      <a href="mailto:czesc@studiobajek.pl" class="md-link"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
+      <a class="btn primary md-cta" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z"></path></svg></a>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero shell" id="top" data-screen-label="01 Hero">
-  <div class="lead-block" style="max-width: 880px; margin: 0 auto; text-align: center;">
-    <h1>Ciepłe bajki audio,<br>do których dziecko<br><em>zawsze chce wracać.</em></h1>
-    <div class="hero-platforms" style="margin: 32px auto 28px;">
+<section class="hero shell dark-band" id="top" data-screen-label="01 Hero">
+  <div class="lead-block" style="text-align: center; margin: 0 auto;">
+    <h1>Bajki audio dla dzieci.<br><em>Przyjemne też dla rodziców.</em></h1>
+    <div class="hero-platforms" style="margin: 32px auto 36px;">
       <span class="label">Dostępne na</span>
       <span class="logos">
-        <a href="https://open.spotify.com/show/033dj3n8O8wcOK8OWzlUU9" target="_blank" rel="noopener" aria-label="Studio Bajek na Spotify"><img class="spot" src="img/spotify-logo.png" alt="Spotify"></a>
+        <a href="https://open.spotify.com/show/033dj3n8O8wcOK8OWzlUU9" target="_blank" rel="noopener" aria-label="Studio Bajek na Spotify">
+          <svg viewBox="0 0 24 24" fill="#1DB954" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.42c-.18.3-.57.39-.87.21-2.39-1.46-5.4-1.79-8.94-.98-.34.08-.69-.13-.77-.47-.08-.34.13-.69.47-.77 3.88-.89 7.21-.51 9.9 1.13.31.19.4.58.21.88zm1.22-2.72c-.23.37-.71.49-1.08.26-2.74-1.68-6.91-2.17-10.15-1.18-.41.12-.85-.11-.97-.52-.12-.41.11-.85.52-.97 3.71-1.13 8.32-.58 11.47 1.34.36.22.48.71.21 1.07zm.11-2.83C14.65 8.94 9.4 8.76 6.34 9.71c-.49.15-1.02-.13-1.17-.62-.15-.49.13-1.02.62-1.17 3.51-1.07 9.32-.86 13.07 1.36.45.27.6.84.33 1.29-.27.45-.84.6-1.29.33z"></path></svg>
+          <span>Spotify</span>
+        </a>
         <span class="sep"></span>
-        <img src="img/youtube-logo.webp" alt="YouTube">
+        <a href="https://www.youtube.com/@StudioBajek" target="_blank" rel="noopener" aria-label="Studio Bajek na YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M23.5 6.2c-.27-1-1.06-1.79-2.06-2.06C19.62 3.6 12 3.6 12 3.6s-7.62 0-9.44.54c-1 .27-1.79 1.06-2.06 2.06C0 8.02 0 12 0 12s0 3.98.5 5.8c.27 1 1.06 1.79 2.06 2.06 1.82.54 9.44.54 9.44.54s7.62 0 9.44-.54c1-.27 1.79-1.06 2.06-2.06.5-1.82.5-5.8.5-5.8s0-3.98-.5-5.8z"></path><path fill="#FFFFFF" d="M9.6 15.6V8.4l6.24 3.6L9.6 15.6z"></path></svg>
+          <span>YouTube</span>
+        </a>
       </span>
     </div>
-    <p style="font-size: clamp(20px, 2vw, 26px); color: var(--ink); margin: 4px auto 0; max-width: 720px; line-height: 1.5; font-weight: 500;">
-      Cześć, jestem <span style="color: var(--brick); font-weight: 700;">Michał</span>. Uwielbiam być tatą, dlatego stworzyłem serię bajek, których pierwszą i najbardziej wymagającą testerką jest moja córka.
+    <p style="font-size: clamp(20px, 2vw, 26px); margin: 4px auto 0; max-width: 760px; line-height: 1.5; font-weight: 500;">
+      Cześć, jestem <span class="brick-text">Michał</span>. Uwielbiam być tatą, dlatego stworzyłem serię bajek, których pierwszą i najbardziej wymagającą testerką jest moja córka.
     </p>
-    <div class="hero-ctas" style="justify-content:center; margin-top: 36px;">
+    <div class="hero-ctas" style="justify-content:center; margin-top: 44px;">
       <a class="btn primary lg" href="#serie">Poznaj nasze bajki <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6"></path></svg></a>
       <a class="btn lg" href="#o-mnie">O mnie</a>
     </div>
   </div>
-
 </section>
 
 <!-- SERIES TILES -->
@@ -544,7 +818,7 @@
     <a class="series-tile" href="#miska">
       <div class="tile-art" style="background:#FBF3E1;">
         <span class="tile-num">1</span>
-        <img src="img/okladka-v2.png" alt="Miśka i Ptyś" style="object-fit: contain; padding: 8px; background: #FBF3E1; width: 423.312px">
+        <img src="img/okladka-v2.png" alt="Miśka i Ptyś" style="object-fit: contain; padding: 8px; background: #FBF3E1; width: 320px">
       </div>
       <div class="tile-body">
         <div class="tile-eyebrow">Codzienność · 3–5 lat</div>
@@ -567,10 +841,10 @@
       </div>
     </a>
 
-    <a class="series-tile" href="#otto">
+    <a class="series-tile" href="#atlas">
       <div class="tile-art" style="background:#EFE6CB;">
         <span class="tile-num">3</span>
-        <img src="img/atlas-okladka.png" alt="Atlas Małych Dziwności — okładka" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#EFE6CB;">
+        <img src="img/atlas-okladka.png" alt="Atlas Małych Dziwności — okładka" style="width: 100%; height: 100%; object-fit: contain; object-position: center center; display: block; background: rgb(239, 230, 203);">
       </div>
       <div class="tile-body">
         <div class="tile-eyebrow">Magia · 4–8 lat</div>
@@ -599,10 +873,10 @@
           <a class="btn primary meta-cta" href="serie/miska-i-ptys.html">Wszystkie odcinki <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6"></path></svg></a>
         </div>
         <div class="series-cast">
-          <span class="cast-pill"><span class="av"><img src="img/miska-face.png" alt="" style=""></span>Miśka, 4 lata</span>
-          <span class="cast-pill" style=""><span class="av"><img src="img/ptys.png" alt=""></span>Ptyś</span>
-          <span class="cast-pill"><span class="av"><img src="img/figa.png" alt=""></span>Figa</span>
-          <span class="cast-pill"><span class="av"><img src="img/stefan.png" alt=""></span>Stefanek</span>
+          <span class="cast-pill"><span class="av"><img src="img/miska-face.png" alt="Miśka, główna bohaterka" style=""></span>Miśka, 4 lata</span>
+          <span class="cast-pill" style=""><span class="av"><img src="img/ptys.png" alt="Ptyś, lis-pluszak"></span>Ptyś</span>
+          <span class="cast-pill"><span class="av"><img src="img/figa.png" alt="Figa, kotka"></span>Figa</span>
+          <span class="cast-pill"><span class="av"><img src="img/stefan.png" alt="Stefanek, młodszy brat"></span>Stefanek</span>
         </div>
       </div>
       <div style="color: var(--brick);">
@@ -661,8 +935,8 @@
         </div>
       </div>
       <div>
-        <div class="series-cover" style="border-color:#2f5e4f; background:#EFE6CB;">
-          <img src="img/atlas-okladka.png" alt="Atlas Małych Dziwności — okładka" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#EFE6CB;">
+        <div class="series-cover" style="border-color: rgba(125,79,154,0.4);">
+          <img src="img/atlas-okladka.png" alt="Atlas Małych Dziwności — okładka" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;">
         </div>
       </div>
     </div>
@@ -670,7 +944,7 @@
 </section>
 
 <!-- O SERII -->
-<section class="section shell" id="o-serii" data-screen-label="06 Filozofia">
+<section class="section shell" id="o-serii" data-screen-label="06 Filozofia" style="height: 602.281px">
   <div class="section-head">
     <div>
       <div class="section-eyebrow">Filozofia studia</div>
@@ -700,7 +974,7 @@
 </section>
 
 <!-- O MNIE -->
-<section class="section shell" id="o-mnie" data-screen-label="07 O mnie">
+<section class="section shell" id="o-mnie" data-screen-label="07 O mnie" style="height: 960.766px">
   <div class="aboutme">
     <div class="aboutme-photo">
       <div class="aboutme-tape"></div>
@@ -718,54 +992,94 @@
 </p>
       </blockquote>
       <div class="aboutme-meta">
-        <div>2026
-start projektu</div>
-        <div><strong style="text-align: center">1</strong>najsurowsza testerka</div>
+        <div style=""><span style="color: rgb(194, 85, 67); font-size: 32px; letter-spacing: -0.08px; text-align: center;">2026<br></span>start projektu</div>
+        <div><strong style="text-align: center;">1</strong>najsurowsza testerka</div>
         <div><strong style="text-align: center">3</strong>serie w produkcji</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CYTAT ZAMYKAJĄCY -->
+<section class="closing-quote" data-screen-label="08 Zakończenie" style="height: 401.547px; padding: 60px 8px 60px 28px">
+  <svg class="quote-mark" viewBox="0 0 100 80" fill="currentColor" aria-hidden="true">
+    <path d="M22 8 C10 12 4 24 4 40 v32 h32 V40 H20 c0 -10 4 -18 14 -22 z M64 8 C52 12 46 24 46 40 v32 h32 V40 H62 c0 -10 4 -18 14 -22 z"></path>
+  </svg>
+  <blockquote>
+    Nie wszystko trzeba <em>oglądać</em>.<br>
+    Czasami wystarczy dobrze opowiedzieć.
+  </blockquote>
+  <div class="closing-attr">Studio Bajek · 2026</div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="shell footer-row">
-    <div style="max-width: 320px;">
-      <a href="#top" class="brand brand-link" aria-label="Studio Bajek">
-        <span class="brand-logo">
-          <span class="pre">Studio</span>
-          <span class="word">Bajek<span class="dot">.</span></span>
-        </span>
+    <div style="display: flex; align-items: center; gap: 18px;">
+      <a href="#top" class="brand brand-link" aria-label="Studio Bajek" style="flex: none;">
+        <img class="brand-logo-img" src="img/studio_bajek_wordmark_light.svg" alt="Studio Bajek">
       </a>
-      <p style="margin-top: 16px; font-size: 14px; color: var(--ink-soft);">
+      <p style="margin: 0; font-size: 14px; color: var(--ink-soft); max-width: 320px;">
         Ciepłe bajki audio dla dzieci. Małe sprawy, wielkie emocje, odrobina magii.
       </p>
     </div>
     <div class="footer-col">
-      <h5>Serie</h5>
-      <a href="serie/miska-i-ptys.html">Miśka i Ptyś</a>
-      <a href="serie/bruno-i-hektor.html">Bruno i Hektor</a>
-      <a href="serie/atlas-malych-dziwnosci.html">Atlas Małych Dziwności</a>
-    </div>
-    <div class="footer-col">
-      <h5>Słuchaj</h5>
-      <a href="https://open.spotify.com/show/033dj3n8O8wcOK8OWzlUU9" target="_blank" rel="noopener">Spotify</a>
-      <a href="https://youtube.com/@miskaiptys" target="_blank" rel="noopener">YouTube</a>
-    </div>
-    <div class="footer-col">
-      <h5>Kontakt</h5>
-      <a href="/cdn-cgi/l/email-protection#4d2e37283e2e0d3e39382924222f2c272826633d21"><span class="__cf_email__" data-cfemail="ceadb4abbdad8ebdbabbaaa7a1acafa4aba5e0bea2">[email&#160;protected]</span></a>
+      <h5>Napisz do nas</h5>
+      <a href="mailto:czesc@studiobajek.pl">czesc@studiobajek.pl</a>
       <a href="#">Instagram</a>
       <a href="#">Współpraca</a>
     </div>
   </div>
   <div class="shell footer-bottom">
-    <div>© 2025 Studio Bajek · studiobajek.pl</div>
-    <div>Polityka prywatności · Regulamin</div>
+    <div>© 2026 Studio Bajek</div>
+    <div><a href="serie/polityka-prywatnosci.html" style="color: inherit;">Polityka prywatności</a> · <a href="serie/regulamin.html" style="color: inherit;">Regulamin</a></div>
   </div>
 </footer>
 
 
+<script>
+  // Auto-active chapter link based on scroll position
+  (function () {
+    const links = document.querySelectorAll('.nav-chapters a[data-chapter]');
+    if (!links.length) return;
+    const map = new Map();
+    links.forEach(a => {
+      const id = a.getAttribute('data-chapter');
+      const sec = document.getElementById(id);
+      if (sec) map.set(sec, a);
+    });
+    if (!map.size) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio > 0.25) {
+          links.forEach(l => l.classList.remove('is-active'));
+          const a = map.get(e.target);
+          if (a) a.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
+    map.forEach((_, sec) => obs.observe(sec));
+  })();
 
+  // Mobile drawer toggle
+  (function () {
+    const nav = document.querySelector('.nav.nav-wide');
+    const burger = nav && nav.querySelector('.nav-burger');
+    const drawer = document.getElementById('mobile-drawer');
+    if (!nav || !burger || !drawer) return;
+    const close = () => {
+      nav.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    };
+    burger.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    });
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
+</script>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body></html>
+</body></html>
