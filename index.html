@@ -4,7 +4,96 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Studio Bajek — ciepłe bajki audio dla dzieci</title>
+
+  <!-- Primary SEO -->
+  <title>Studio Bajek — ciepłe bajki audio dla dzieci | Spotify, YouTube</title>
+  <meta name="description" content="Studio Bajek to ciepłe bajki audio dla dzieci 3–7 lat. Miśka i Ptyś, Bruno i Hektor, Otto i Cień — trzy serie o codziennych emocjach, przygodach i odrobinie magii. Słuchaj na Spotify i YouTube." />
+  <meta name="keywords" content="bajki dla dzieci, bajki audio, bajki na dobranoc, audiobook dla dzieci, podcast dla dzieci, Miśka i Ptyś, Studio Bajek, bajki Spotify, bajki YouTube, bajki 3 lata, bajki 5 lat" />
+  <meta name="author" content="Michał · Studio Bajek" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://studiobajek.pl/" />
+  <meta name="theme-color" content="#1F2A44" />
+  <link rel="icon" type="image/png" href="img/okladka.png" />
+  <link rel="apple-touch-icon" href="img/okladka.png" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="Studio Bajek" />
+  <meta property="og:title" content="Studio Bajek — ciepłe bajki audio dla dzieci" />
+  <meta property="og:description" content="Trzy serie audio o codziennych emocjach, przygodach i odrobinie magii. Dostępne na Spotify i YouTube." />
+  <meta property="og:url" content="https://studiobajek.pl/" />
+  <meta property="og:image" content="https://studiobajek.pl/img/postacie.png" />
+  <meta property="og:image:alt" content="Bohaterowie Studia Bajek" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Studio Bajek — ciepłe bajki audio dla dzieci" />
+  <meta name="twitter:description" content="Trzy serie audio dla dzieci 3–7 lat. Słuchaj na Spotify i YouTube." />
+  <meta name="twitter:image" content="https://studiobajek.pl/img/postacie.png" />
+
+  <!-- Structured data: Organization + WebSite + CreativeWorkSeries x3 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://studiobajek.pl/#org",
+        "name": "Studio Bajek",
+        "url": "https://studiobajek.pl/",
+        "logo": "https://studiobajek.pl/img/okladka.png",
+        "founder": { "@type": "Person", "name": "Michał" },
+        "description": "Niezależne studio tworzące ciepłe bajki audio dla dzieci.",
+        "sameAs": [
+          "https://open.spotify.com/show/033dj3n8O8wcOK8OWzlUU9",
+          "https://www.youtube.com/@studiobajek"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://studiobajek.pl/#website",
+        "url": "https://studiobajek.pl/",
+        "name": "Studio Bajek",
+        "inLanguage": "pl-PL",
+        "publisher": { "@id": "https://studiobajek.pl/#org" }
+      },
+      {
+        "@type": "CreativeWorkSeries",
+        "name": "Miśka i Ptyś",
+        "url": "https://studiobajek.pl/serie/miska-i-ptys.html",
+        "author": { "@type": "Person", "name": "Michał" },
+        "publisher": { "@id": "https://studiobajek.pl/#org" },
+        "inLanguage": "pl-PL",
+        "audience": { "@type": "PeopleAudience", "suggestedMinAge": 3, "suggestedMaxAge": 5 },
+        "genre": "Bajki audio dla dzieci",
+        "description": "Codzienność widziana oczami pięciolatki Miśki i jej pluszowego lisa Ptysia."
+      },
+      {
+        "@type": "CreativeWorkSeries",
+        "name": "Bruno i Hektor",
+        "url": "https://studiobajek.pl/serie/bruno-i-hektor.html",
+        "publisher": { "@id": "https://studiobajek.pl/#org" },
+        "inLanguage": "pl-PL",
+        "audience": { "@type": "PeopleAudience", "suggestedMinAge": 5, "suggestedMaxAge": 7 },
+        "genre": "Bajki audio dla dzieci",
+        "description": "Sześcioletni Bruno i jego ogromny pies Hektor odkrywają świat poprzez pytania."
+      },
+      {
+        "@type": "CreativeWorkSeries",
+        "name": "Otto i Cień",
+        "url": "https://studiobajek.pl/serie/otto-i-cien.html",
+        "publisher": { "@id": "https://studiobajek.pl/#org" },
+        "inLanguage": "pl-PL",
+        "audience": { "@type": "PeopleAudience", "suggestedMinAge": 5, "suggestedMaxAge": 7 },
+        "genre": "Bajki audio dla dzieci",
+        "description": "Otto i jego cień — spokojne, magiczne historie o emocjach i wyobraźni."
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" />
@@ -36,7 +125,15 @@
     h1, h2, h3, h4, h5 { color: var(--ink); font-weight: 700; letter-spacing: -0.025em; }
     h1 em, h2 em, h3 em { color: var(--brick); font-weight: 700; }
     p { color: var(--ink-soft); }
-    .nav { background: rgba(246, 235, 210, 0.92); border-bottom-color: var(--line); }
+    .nav { background: var(--ink) !important; border-bottom: 1px solid rgba(246,235,210,0.08) !important; }
+    .nav .brand-logo .word { color: var(--paper); }
+    .nav .brand-logo .word .dot { color: var(--amber); }
+    .nav .brand-logo .pre { color: var(--paper); }
+    .nav .nav-links a { color: rgba(246,235,210,0.78); }
+    .nav .nav-links a:hover { color: var(--paper); }
+    .nav .nav-links a:hover::after { background: var(--amber); }
+    .nav .nav-actions .btn.primary { background: var(--amber); color: var(--ink); border-color: var(--amber); }
+    .nav .nav-actions .btn.primary:hover { background: #f6c965; border-color: #f6c965; }
     .brand { color: var(--ink); font-style: normal; font-weight: 800; }
     .lp-mark { font-style: normal; font-weight: 800; letter-spacing: -0.02em; }
     .lp-mark span { color: var(--brick); }
@@ -253,7 +350,23 @@
     .hero { padding-bottom: 40px !important; }
     .section#serie { padding-top: 56px !important; }
 
-    /* === Brand mark + wordmark === */
+    /* === Studio Bajek wordmark (Studio small above, Bajek large below — left aligned) === */
+    .brand-logo { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1; font-family: var(--display); white-space: nowrap; gap: 4px; }
+    .brand-logo .pre {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ink-mute);
+      padding-left: 2px;
+    }
+    .brand-logo .word { font-size: 30px; font-weight: 800; letter-spacing: -0.025em; color: var(--ink); }
+    .brand-logo .word .dot { color: var(--brick); }
+    .footer .brand-logo .word { font-size: 28px; }
+    @media (max-width: 700px) {
+      .brand-logo .pre { font-size: 10px; letter-spacing: 0.22em; }
+      .brand-logo .word { font-size: 22px; }
+    }
     .brand-link { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
     .brand-mark {
       display: block;
@@ -281,6 +394,9 @@
     /* === Series meta with inline CTA === */
     .series-meta { align-items: center !important; gap: 28px 32px !important; flex-wrap: nowrap !important; }
     .series-meta > div { white-space: nowrap; }
+    .series-meta .meta-voice { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+    .series-meta .meta-voice strong { display: inline-flex; align-items: center; justify-content: center; }
+    .series-meta .meta-voice svg { display: block; }
     @media (max-width: 720px) {
       .series-meta { flex-wrap: wrap !important; }
     }
@@ -334,8 +450,16 @@
       font-style: normal !important;
       margin: 0 !important;
       max-width: none !important;
+      text-wrap: pretty;
+      overflow-wrap: break-word;
     }
     .aboutme-quote em { color: var(--brick); font-weight: 700; font-style: normal; }
+    @media (max-width: 700px) {
+      .aboutme-quote { padding: 32px 22px 24px 22px; margin: 28px 0 24px; }
+      .aboutme-quote::before { font-size: 80px; left: 14px; top: -8px; }
+      .aboutme-quote p { font-size: 17px !important; line-height: 1.5 !important; }
+      .aboutme-quote .attribution { font-size: 11px !important; }
+    }
     .aboutme-quote .attribution {
       margin-top: 18px !important;
       font-size: 13px !important;
@@ -351,9 +475,9 @@
 <nav class="nav nav-wide">
   <div class="nav-row">
     <a href="#top" class="brand brand-link" aria-label="Studio Bajek">
-      <span class="brand-word">
-        <span class="brand-word-top">Studio</span>
-        <span class="brand-word-bot">Bajek<em>.</em></span>
+      <span class="brand-logo">
+        <span class="pre">Studio</span>
+        <span class="word">Bajek<span class="dot">.</span></span>
       </span>
     </a>
     <div class="nav-links">
@@ -375,7 +499,7 @@
     <div class="hero-platforms" style="margin: 32px auto 28px;">
       <span class="label">Dostępne na</span>
       <span class="logos">
-        <img class="spot" src="img/spotify-logo.png" alt="Spotify" />
+        <a href="https://open.spotify.com/show/033dj3n8O8wcOK8OWzlUU9" target="_blank" rel="noopener" aria-label="Studio Bajek na Spotify"><img class="spot" src="img/spotify-logo.png" alt="Spotify" /></a>
         <span class="sep"></span>
         <img src="img/youtube-logo.webp" alt="YouTube" />
       </span>
@@ -533,8 +657,8 @@
           Mała Miśka mieszka z mamą, tatą, kotką Figą i braciszkiem Stefankiem. Wszędzie chodzi z lisem-pluszakiem Ptysiem, który nie mówi magicznie — po prostu jest. Każdy odcinek to jedna codzienna sytuacja: ubieranie się, kłótnia, wizyta u babci, najgorszy dzień. Bez magii. Bez krzyku.
         </p>
         <div class="series-meta">
-          <div><strong>15</strong>odcinków · sezon 1</div>
-          <div><strong>10–15</strong>min na odcinek</div>
+          <div class="meta-voice"><strong><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4 c-5 0 -8 3.5 -8 8.5 c0 3.5 1.5 6.5 4 7.8 c-.3 .5 -.5 1 -.5 1.7 c0 1.5 1 2.5 2.5 2.7 l-.3 2.3 h4.6 l-.3 -2.3 c1.5 -.2 2.5 -1.2 2.5 -2.7 c0 -.7 -.2 -1.2 -.5 -1.7 c2.5 -1.3 4 -4.3 4 -7.8 c0 -5 -3 -8.5 -8 -8.5 z"/><path d="M8.2 12 c-.5 5 1 11 4 14.5 c-2 -.5 -3.5 -1.5 -4.5 -3.5 c-.5 -3 -.3 -7 .5 -11 z"/><path d="M23.8 12 c.5 5 -1 11 -4 14.5 c2 -.5 3.5 -1.5 4.5 -3.5 c.5 -3 .3 -7 -.5 -11 z"/><path d="M10 10 q3 -3 6 -3 q3 0 6 3"/><path d="M13 14 h.01 M19 14 h.01"/></svg></strong>kobiecy głos</div>
+          <div><strong>12–20</strong>min na odcinek</div>
           <div><strong>3×</strong>w tygodniu</div>
           <a class="btn primary meta-cta" href="serie/miska-i-ptys.html">Wszystkie odcinki <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6" /></svg></a>
         </div>
@@ -612,9 +736,9 @@
           Bruno ma sześć lat i nieprzerwany strumień pytań. Hektor jest ogromnym, niezgrabnym kundlem o sercu z budyniu. Razem łażą po lesie za domem, gubią się w deszczu, znajdują dziwne rzeczy w trawie. To bajki o uczeniu się świata przez błoto, ciekawość i bardzo lojalnego psa.
         </p>
         <div class="series-meta">
-          <div><strong>8</strong>odcinków · w produkcji</div>
+          <div class="meta-voice"><strong><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4 c-5 0 -8 3.5 -8 8.5 c0 3.5 1.5 6.5 4 7.8 c-.3 .5 -.5 1 -.5 1.7 c0 1.5 1 2.5 2.5 2.7 l-.3 2.3 h4.6 l-.3 -2.3 c1.5 -.2 2.5 -1.2 2.5 -2.7 c0 -.7 -.2 -1.2 -.5 -1.7 c2.5 -1.3 4 -4.3 4 -7.8 c0 -5 -3 -8.5 -8 -8.5 z"/><path d="M8.2 12 c-.5 5 1 11 4 14.5 c-2 -.5 -3.5 -1.5 -4.5 -3.5 c-.5 -3 -.3 -7 .5 -11 z"/><path d="M23.8 12 c.5 5 -1 11 -4 14.5 c2 -.5 3.5 -1.5 4.5 -3.5 c.5 -3 .3 -7 -.5 -11 z"/><path d="M10 10 q3 -3 6 -3 q3 0 6 3"/><path d="M13 14 h.01 M19 14 h.01"/></svg></strong>kobiecy głos</div>
           <div><strong>14–18</strong>min na odcinek</div>
-          <div><strong>jesień</strong>2026</div>
+          <div><strong>lato</strong>2026</div>
           <a class="btn primary meta-cta" href="serie/bruno-i-hektor.html" style="background:#2f5e4f; color:#F4EAD0; border-color:#2f5e4f;">Wszystkie odcinki <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6" /></svg></a>
         </div>
         <div class="series-cast">
@@ -638,9 +762,9 @@
           Kiedy Otto idzie spać, jego cień nie zostaje na ścianie — wstaje, otwiera szufladę i prowadzi go do miejsca, w którym księżyc świeci w środku domu, klucze rosną na drzewach, a smutek można zostawić w słoiku. Surrealistyczne, magiczne historie o tym, że niektóre rzeczy łatwiej zrozumieć przez sen.
         </p>
         <div class="series-meta">
-          <div><strong>5</strong>odcinków · pilot</div>
+          <div class="meta-voice"><strong><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 c0 -5 3 -9 7 -9 c4 0 7 4 7 9 c0 4 -3 8 -7 8 c-4 0 -7 -4 -7 -8 z"/><path d="M8.5 11 c0 -3 3 -6 7.5 -6 c4.5 0 7.5 3 7.5 6 c0 1 -.3 1.8 -.6 2.4 c-1 -1.4 -3 -2.4 -6.9 -2.4 c-3.9 0 -5.9 1 -6.9 2.4 c-.3 -.6 -.6 -1.4 -.6 -2.4 z"/><path d="M12 16 q1 -1 2 0 M18 16 q1 -1 2 0"/><path d="M14.5 22 q1.5 1 3 0"/><path d="M11.5 22 q-1 4 -4.5 5 M20.5 22 q1 4 4.5 5"/><path d="M13 22.5 q-.5 3 0 5 M19 22.5 q.5 3 0 5"/></svg></strong>męski głos</div>
           <div><strong>16–22</strong>min na odcinek</div>
-          <div><strong>2027</strong>· w pisaniu</div>
+          <div><strong>lato</strong>2026</div>
           <a class="btn primary meta-cta" href="serie/otto-i-cien.html" style="background:#c89df0; color:#1a1240; border-color:#c89df0;">Wszystkie odcinki <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6" /></svg></a>
         </div>
         <div class="series-cast">
@@ -772,9 +896,9 @@
   <div class="shell footer-row">
     <div style="max-width: 320px;">
       <a href="#top" class="brand brand-link" aria-label="Studio Bajek">
-        <span class="brand-word">
-          <span class="brand-word-top">Studio</span>
-          <span class="brand-word-bot">Bajek<em>.</em></span>
+        <span class="brand-logo">
+          <span class="pre">Studio</span>
+          <span class="word">Bajek<span class="dot">.</span></span>
         </span>
       </a>
       <p style="margin-top: 16px; font-size: 14px; color: var(--ink-soft);">
@@ -789,8 +913,7 @@
     </div>
     <div class="footer-col">
       <h5>Słuchaj</h5>
-      <a href="https://open.spotify.com/show/miskaiptys" target="_blank" rel="noopener">Spotify</a>
-      <a href="#">Apple Podcasts</a>
+      <a href="https://open.spotify.com/show/033dj3n8O8wcOK8OWzlUU9" target="_blank" rel="noopener">Spotify</a>
       <a href="https://youtube.com/@miskaiptys" target="_blank" rel="noopener">YouTube</a>
     </div>
     <div class="footer-col">
