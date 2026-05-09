@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Studio Bajek — ciepłe bajki audio dla dzieci</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="styles-nocna.css" />
+  <style>
+    /* === Paper theme override (warm cream) — applied on top of styles-nocna.css === */
+    :root {
+      --display: "DM Sans", system-ui, sans-serif;
+      --body:    "DM Sans", system-ui, sans-serif;
+      --hand:    "DM Sans", system-ui, sans-serif;
+      --display-font: var(--display);
+      --body-font: var(--body);
+      --hand-font: var(--hand);
+
+      /* paper palette */
+      --paper:       #F6EBD2;
+      --paper-deep:  #ECDFC0;
+      --paper-warm:  #FBF3E1;
+      --ink:         #1F2A44;
+      --ink-soft:    rgba(31, 42, 68, 0.78);
+      --ink-mute:    rgba(31, 42, 68, 0.5);
+      --line:        rgba(31, 42, 68, 0.14);
+      --line-strong: rgba(31, 42, 68, 0.28);
+    }
+    html, body { background: var(--paper) !important; color: var(--ink); }
+    body { background-image: none !important; font-family: var(--body); font-weight: 500; }
+    body::before { display: none !important; }
+
+    h1, h2, h3, h4, h5 { color: var(--ink); font-weight: 700; letter-spacing: -0.025em; }
+    h1 em, h2 em, h3 em { color: var(--brick); font-weight: 700; }
+    p { color: var(--ink-soft); }
+    .nav { background: rgba(246, 235, 210, 0.92); border-bottom-color: var(--line); }
+    .brand { color: var(--ink); font-style: normal; font-weight: 800; }
+    .lp-mark { font-style: normal; font-weight: 800; letter-spacing: -0.02em; }
+    .lp-mark span { color: var(--brick); }
+    .nav-links { color: var(--ink-soft); }
+    .nav-links a:hover { color: var(--brick); }
+    .section-eyebrow { color: var(--brick); font-weight: 700; }
+    .section-eyebrow::before { background: var(--brick); }
+
+    .btn { color: var(--ink); border-color: var(--line-strong); }
+    .btn:hover { border-color: var(--ink); }
+    .btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .btn.primary:hover { background: #11182a; }
+
+    /* Hero — paper */
+    .hero::before { display: none; }
+    .hero h1 em { color: var(--brick); }
+    .hero-lead { color: var(--ink-soft); }
+    .lead-block { max-width: 880px; }
+
+    /* Platform row in hero */
+    .hero-platforms {
+      display: inline-flex; align-items: center; gap: 18px;
+      flex-wrap: wrap; justify-content: center;
+      margin-bottom: 24px;
+      padding: 10px 22px 10px 22px;
+      background: var(--paper-warm);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 13px; font-weight: 600;
+      color: var(--ink-soft);
+    }
+    .hero-platforms .label { letter-spacing: 0.06em; }
+    .hero-platforms .logos { display: inline-flex; align-items: center; gap: 14px; }
+    .hero-platforms .logos img { height: 22px; width: auto; display: block; }
+    .hero-platforms .logos img.spot { height: 22px; }
+    .hero-platforms .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-mute); }
+
+    /* Section / chunks */
+    .section { padding: 110px 28px; }
+    .platforms { display: none; }
+
+    /* Series tiles on paper */
+    .series-tiles { gap: 24px; }
+    .series-tile {
+      background: var(--paper-warm);
+      border-color: var(--line);
+      color: var(--ink);
+    }
+    .series-tile:hover { border-color: var(--brick); box-shadow: 0 14px 40px rgba(31,42,68,0.08); }
+    .series-tile h3 { color: var(--ink); }
+    .series-tile p { color: var(--ink-soft); }
+    .series-tile .tile-eyebrow { color: var(--brick); }
+    .series-tile .tile-cta { color: var(--brick); }
+    .series-tile .tile-num { background: var(--ink); color: var(--paper); font-style: normal; font-weight: 800; }
+
+    /* Series detail blocks: keep warm cream block visually integrated */
+    .series-block { border-top: 1px solid var(--line); }
+    .series-block.warm { background: var(--paper-warm); }
+    .series-block.warm .series-meta { border-top-color: var(--line); }
+
+    /* Cover — show full image, no crop */
+    .series-cover {
+      aspect-ratio: 1 / 1;
+      background: var(--paper-warm) !important;
+      border: 1px solid var(--line) !important;
+      box-shadow: 0 14px 40px rgba(31,42,68,0.10);
+      padding: 0;
+      overflow: hidden;
+    }
+    .series-cover img { object-fit: contain !important; background: var(--paper-warm); padding: 0; }
+
+    /* About cards */
+    .about-grid { border-top-color: var(--line); border-bottom-color: var(--line); }
+    .about-card { border-right-color: var(--line); }
+    .about-card .glyph { background: var(--brick); color: var(--paper); }
+    .about-card h3 { color: var(--ink); }
+    .about-card p { color: var(--ink-soft); }
+
+    /* About me — paper inside paper, accent border */
+    .aboutme {
+      background: var(--paper-warm);
+      box-shadow: 0 30px 80px rgba(31,42,68,0.10);
+      color: var(--ink);
+    }
+    .aboutme::before { border-color: var(--line); }
+    .aboutme-body p { color: var(--ink-soft); }
+    .aboutme-body h2 { color: var(--ink); }
+    .aboutme-body h2 em { color: var(--brick); }
+    .aboutme-body .section-eyebrow { color: var(--brick); }
+    .aboutme-body .section-eyebrow::before { background: var(--brick); }
+    .aboutme-sig { background: rgba(242,178,58,0.28); color: var(--ink) !important; font-family: var(--body) !important; font-size: 18px !important; font-style: italic; }
+    .aboutme-meta { border-top-color: var(--line); }
+    .aboutme-meta div { color: var(--ink-mute); }
+    .aboutme-meta strong { color: var(--brick); }
+    .photo-slot {
+      background: repeating-linear-gradient(45deg, rgba(31,42,68,0.06) 0 12px, rgba(31,42,68,0.02) 12px 24px), var(--paper-deep);
+      border-color: var(--line-strong);
+      color: var(--ink-soft);
+      font-style: normal;
+    }
+    .photo-slot small { color: var(--ink-mute); }
+
+    /* Footer */
+    .footer { background: var(--paper-warm); border-top-color: var(--line); }
+    .footer-col h5 { color: var(--brick); }
+    .footer-col a { color: var(--ink-soft); }
+    .footer-col a:hover { color: var(--ink); }
+    .footer-bottom { color: var(--ink-mute); border-top-color: var(--line); }
+
+    .lp-mark { font-family: var(--display); font-size: 22px; line-height: 1; }
+    .lead-block { max-width: 720px; }
+
+    /* === Brand logo image === */
+    .brand-logo { display: block; height: 56px; width: auto; }
+    .brand-link { display: inline-flex; align-items: center; }
+
+    /* === Fix readability on forest / midnight series blocks (now on paper) === */
+    .series-block.forest, .series-block.midnight {
+      background: var(--paper-warm) !important;
+      color: var(--ink) !important;
+    }
+    .series-block.forest h1, .series-block.forest h2, .series-block.forest h3,
+    .series-block.midnight h1, .series-block.midnight h2, .series-block.midnight h3 { color: var(--ink) !important; }
+    .series-block.forest p, .series-block.midnight p { color: var(--ink-soft) !important; }
+    .series-block.forest h2 em { color: #3f7a64 !important; }
+    .series-block.midnight h2 em { color: #6b5dbf !important; }
+    .series-block.forest .section-eyebrow { color: #3f7a64 !important; }
+    .series-block.forest .section-eyebrow::before { background: #3f7a64 !important; }
+    .series-block.midnight .section-eyebrow { color: #6b5dbf !important; }
+    .series-block.midnight .section-eyebrow::before { background: #6b5dbf !important; }
+    .series-block.forest .cast-pill, .series-block.midnight .cast-pill {
+      color: var(--ink) !important;
+      background: rgba(31,42,68,0.06) !important;
+      border-color: var(--line) !important;
+    }
+    .series-block.forest .series-meta, .series-block.midnight .series-meta { border-top-color: var(--line) !important; }
+    .series-block.forest .series-meta div, .series-block.midnight .series-meta div { color: var(--ink-mute) !important; }
+    .series-block.forest .series-meta strong { color: #3f7a64 !important; }
+    .series-block.midnight .series-meta strong { color: #6b5dbf !important; }
+    .series-block.forest .btn.lg:not(.primary),
+    .series-block.midnight .btn.lg:not(.primary) { color: var(--ink) !important; border-color: var(--line-strong) !important; }
+
+    /* === Font switcher === */
+    .font-switcher {
+      position: fixed;
+      right: 20px; bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 6px 8px 6px 14px;
+      border-radius: 999px;
+      box-shadow: 0 14px 40px rgba(31,42,68,0.18);
+      z-index: 100;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .font-switcher .label {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      opacity: 0.7; margin-right: 4px;
+    }
+    .font-switcher button {
+      border: none;
+      background: transparent;
+      color: var(--paper);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      letter-spacing: 0;
+    }
+    .font-switcher button:hover { background: rgba(246,235,210,0.12); }
+    .font-switcher button.active {
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    /* === Wide, generous nav === */
+    .nav.nav-wide { backdrop-filter: blur(10px); }
+    .nav.nav-wide .nav-row {
+      max-width: none;
+      width: 100%;
+      padding: 22px 56px;
+      gap: 48px;
+    }
+    .nav.nav-wide .brand { font-size: 22px; }
+    .nav.nav-wide .brand-word { display: inline-flex; flex-direction: column; line-height: 0.95; }
+    .nav.nav-wide .brand-word-top { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; opacity: 0.7; }
+    .nav.nav-wide .brand-word-bot { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+    .nav.nav-wide .brand-word-bot em { color: var(--brick); font-style: normal; }
+    .nav.nav-wide .nav-links {
+      flex: 1;
+      justify-content: center;
+      gap: 44px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .nav.nav-wide .nav-links a { position: relative; padding: 6px 0; transition: color .2s ease; }
+    .nav.nav-wide .nav-links a::after {
+      content: ""; position: absolute; left: 50%; bottom: -2px;
+      width: 0; height: 2px; background: var(--brick);
+      transform: translateX(-50%); transition: width .25s ease;
+    }
+    .nav.nav-wide .nav-links a:hover::after { width: 100%; }
+    .nav.nav-wide .nav-actions .btn { padding: 12px 22px; font-weight: 700; }
+    @media (max-width: 1100px) { .nav.nav-wide .nav-row { padding: 18px 32px; gap: 24px; } .nav.nav-wide .nav-links { gap: 28px; } }
+    @media (max-width: 900px) { .nav.nav-wide .nav-row { padding: 16px 20px; } }
+
+    /* === Less air === */
+    .hero { padding-bottom: 40px !important; }
+    .section#serie { padding-top: 56px !important; }
+
+    /* === Brand mark + wordmark === */
+    .brand-link { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-mark { display: block; flex: none; overflow: hidden; }
+    a.brand-link { overflow: hidden; }
+    .brand-mark-wrap { width: 64px; height: 64px; overflow: hidden; flex: none; display: inline-block; border-radius: 0; }
+    .brand-word { display: inline-flex; flex-direction: column; line-height: 1; gap: 4px; font-family: var(--display); }
+    .brand-word-top { font-size: 10px; letter-spacing: 0.26em; font-weight: 700; color: var(--ink-mute); text-transform: uppercase; }
+    .brand-word-bot { font-size: 20px; letter-spacing: -0.025em; font-weight: 800; color: var(--ink); }
+    .brand-word-bot em { color: var(--brick); font-style: normal; }
+    .footer .brand-word-bot { font-size: 22px; }
+
+    /* === Cast pill avatars: real images / svg faces === */
+    .cast-pill { padding: 4px 16px 4px 4px !important; }
+    .cast-pill .av { width: 34px !important; height: 34px !important; border-radius: 50% !important; overflow: hidden; flex: none; padding: 0 !important; font-size: 0; line-height: 0; }
+    .cast-pill .av img, .cast-pill .av svg { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+    /* === Series meta with inline CTA === */
+    .series-meta { align-items: center !important; gap: 28px 32px !important; flex-wrap: nowrap !important; }
+    .series-meta > div { white-space: nowrap; }
+    @media (max-width: 720px) {
+      .series-meta { flex-wrap: wrap !important; }
+    }
+    .series-meta .meta-cta {
+      margin-left: auto;
+      font-size: 14px;
+      padding: 12px 20px;
+      gap: 8px;
+    }
+    @media (max-width: 720px) {
+      .series-meta .meta-cta { margin-left: 0; width: 100%; justify-content: center; }
+    }
+
+    /* === Bruno/Hektor section — own warm sage tint === */
+    .series-block.forest { background: #EFE6CB !important; }
+    .series-block.forest .cast-pill { background: rgba(31,42,68,0.05) !important; border-color: rgba(31,61,52,0.20) !important; color: var(--ink) !important; }
+    .series-block.forest .btn.primary { background: #2f5e4f !important; color: #F4EAD0 !important; border-color: #2f5e4f !important; }
+    .series-block.forest h2 em { color: #2f5e4f !important; }
+    .series-block.forest .section-eyebrow { color: #2f5e4f !important; }
+    .series-block.forest .section-eyebrow::before { background: #2f5e4f !important; }
+    .series-block.forest .series-meta strong { color: #2f5e4f !important; }
+
+    /* Otto stays paper-warm but gets a subtle violet tint difference */
+    .series-block.midnight { background: #EBE3D2 !important; }
+
+    /* === About-me callout (the daughter quote) === */
+    .aboutme-quote {
+      position: relative;
+      margin: 32px 0 28px;
+      padding: 38px 36px 32px 36px;
+      background: linear-gradient(180deg, #FBE9C7 0%, #F6DDB0 100%);
+      border-radius: 18px;
+      box-shadow: 0 14px 36px rgba(194,85,67,0.10), inset 0 0 0 1px rgba(194,85,67,0.18);
+    }
+    .aboutme-quote::before {
+      content: "\201C";
+      position: absolute;
+      left: 22px; top: -18px;
+      font-family: var(--display);
+      font-size: 120px;
+      line-height: 1;
+      color: var(--brick);
+      font-weight: 800;
+      font-style: italic;
+    }
+    .aboutme-quote p {
+      font-size: 22px !important;
+      line-height: 1.5 !important;
+      color: var(--ink) !important;
+      font-weight: 500 !important;
+      font-style: normal !important;
+      margin: 0 !important;
+      max-width: none !important;
+    }
+    .aboutme-quote em { color: var(--brick); font-weight: 700; font-style: normal; }
+    .aboutme-quote .attribution {
+      margin-top: 18px !important;
+      font-size: 13px !important;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute) !important;
+      font-weight: 700 !important;
+    }
+  </style>
+</head>
+<body style="background-color: rgb(255, 174, 0)">
+
+<nav class="nav nav-wide">
+  <div class="nav-row">
+    <a href="#top" class="brand brand-link" aria-label="Studio Bajek">
+      <img class="brand-mark" src="img/logo-mark.png" alt="" style="width:64px;height:64px;object-fit:cover;object-position:center 62%;transform:scale(2.6);transform-origin:center;" />
+      <span class="brand-word">
+        <span class="brand-word-top">Studio</span>
+        <span class="brand-word-bot">Bajek<em>.</em></span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#serie" style="margin: 0px;">Bajki</a>
+      <a href="#o-serii">Filozofia</a>
+      <a href="#o-mnie">O mnie</a>
+      <a href="mailto:czesc@studiobajek.pl">Kontakt</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn primary" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z" /></svg></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero shell" id="top" data-screen-label="01 Hero">
+  <div class="lead-block" style="max-width: 880px; margin: 0 auto; text-align: center;">
+    <h1>Ciepłe bajki audio,<br />do których dziecko<br /><em>zawsze chce wracać.</em></h1>
+    <div class="hero-platforms" style="margin: 32px auto 28px;">
+      <span class="label">Dostępne na</span>
+      <span class="logos">
+        <img class="spot" src="img/spotify-logo.png" alt="Spotify" />
+        <span class="sep"></span>
+        <img src="img/youtube-logo.webp" alt="YouTube" />
+      </span>
+    </div>
+    <p style="font-size: clamp(20px, 2vw, 26px); color: var(--ink); margin: 4px auto 0; max-width: 720px; line-height: 1.5; font-weight: 500;">
+      Cześć, jestem <span style="color: var(--brick); font-weight: 700;">Michał</span>. Uwielbiam być tatą, dlatego stworzyłem serię bajek, których pierwszą i najbardziej wymagającą testerką jest moja córka.
+    </p>
+    <div class="hero-ctas" style="justify-content:center; margin-top: 36px;">
+      <a class="btn primary lg" href="#serie">Poznaj nasze bajki <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6" /></svg></a>
+      <a class="btn lg" href="#o-mnie">O mnie</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- SERIES TILES -->
+<section class="section shell" id="serie" data-screen-label="02 Serie">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">Trzy serie</div>
+      <h2>Trzy zupełnie różne światy.<br /><em>Jeden spokojny rytm.</em></h2>
+    </div>
+    <p class="section-lead">
+      Codzienność, podwórkowe przygody i odrobina magii. Każda seria ma własny ton, ale wszystkie wychodzą z tego samego studia — więc tempo, język i miękkość są te same.
+    </p>
+  </div>
+
+  <div class="series-tiles">
+    <a class="series-tile" href="#miska">
+      <div class="tile-art" style="background:#FBF3E1;">
+        <span class="tile-num">1</span>
+        <img src="img/okladka-v2.png" alt="Miśka i Ptyś" style="object-fit: contain; padding: 8px; background: #FBF3E1; width: 423.312px" />
+      </div>
+      <div class="tile-body">
+        <div class="tile-eyebrow">Codzienność · 3–5 lat</div>
+        <h3>Miśka i Ptyś</h3>
+        <p>Mała Miśka, jej lisek-pluszak Ptyś, kotka Figa i braciszek Stefanek. Małe sprawy, wielkie emocje.</p>
+        <span class="tile-cta">Poznaj serię <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6" /></svg></span>
+      </div>
+    </a>
+
+    <a class="series-tile" href="#bruno">
+      <div class="tile-art" style="background: linear-gradient(180deg, #1d3d35 0%, #0f1f1c 100%);">
+        <span class="tile-num">2</span>
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="bsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6b5e" /><stop offset="1" stop-color="#13241f" /></linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#bsky)" />
+          <!-- moon/sun -->
+          <circle cx="320" cy="80" r="34" fill="#F4EAD0" opacity="0.85" />
+          <!-- trees -->
+          <g opacity="0.6">
+            <path d="M40 250 L70 130 L100 250 Z" fill="#0d1f1a" />
+            <path d="M110 260 L140 110 L170 260 Z" fill="#0d1f1a" />
+            <path d="M250 260 L280 130 L310 260 Z" fill="#0d1f1a" />
+            <path d="M340 270 L365 160 L390 270 Z" fill="#0d1f1a" />
+          </g>
+          <!-- ground -->
+          <ellipse cx="200" cy="290" rx="240" ry="40" fill="#1f3d34" />
+          <!-- dog silhouette -->
+          <g transform="translate(180 195)">
+            <ellipse cx="40" cy="40" rx="46" ry="24" fill="#2a1a14" />
+            <circle cx="78" cy="28" r="16" fill="#2a1a14" />
+            <path d="M88 18 L94 8 L98 22 Z" fill="#2a1a14" />
+            <path d="M70 22 L72 12 L80 22 Z" fill="#2a1a14" />
+            <rect x="20" y="55" width="6" height="20" fill="#2a1a14" rx="2" />
+            <rect x="55" y="55" width="6" height="20" fill="#2a1a14" rx="2" />
+            <path d="M-8 30 q-12 -2 -10 -16 q4 6 14 6" fill="#2a1a14" />
+          </g>
+          <!-- boy silhouette -->
+          <g transform="translate(140 175)">
+            <circle cx="0" cy="0" r="14" fill="#1a1410" />
+            <rect x="-12" y="14" width="24" height="40" rx="8" fill="#3d2516" />
+            <rect x="-10" y="52" width="8" height="22" fill="#1a1410" />
+            <rect x="2" y="52" width="8" height="22" fill="#1a1410" />
+          </g>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-eyebrow">Przygody · 4–7 lat</div>
+        <h3>Bruno i Hektor</h3>
+        <p>Sześciolatek Bruno i jego ogromny, niezgrabny pies Hektor. Las, deszcz, błoto i dziesięć pytań na minutę.</p>
+        <span class="tile-cta">Poznaj serię <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6" /></svg></span>
+      </div>
+    </a>
+
+    <a class="series-tile" href="#otto">
+      <div class="tile-art" style="background: linear-gradient(180deg, #2a1f50 0%, #0d0a26 100%);">
+        <span class="tile-num">3</span>
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="moon3" cx="0.3" cy="0.3" r="0.7"><stop offset="0" stop-color="#F4EAD0" /><stop offset="1" stop-color="#c89df0" /></radialGradient>
+          </defs>
+          <rect width="400" height="300" fill="#15103b" />
+          <!-- stars -->
+          <g fill="#F4EAD0">
+            <circle cx="50" cy="40" r="1.5" />
+            <circle cx="120" cy="80" r="1" />
+            <circle cx="200" cy="50" r="2" />
+            <circle cx="270" cy="100" r="1.2" />
+            <circle cx="340" cy="60" r="1.5" />
+            <circle cx="80" cy="180" r="1" />
+            <circle cx="350" cy="200" r="1.5" />
+            <circle cx="60" cy="120" r="1.5" />
+            <circle cx="170" cy="180" r="1" />
+            <circle cx="320" cy="150" r="1" />
+          </g>
+          <!-- big moon -->
+          <circle cx="290" cy="90" r="48" fill="url(#moon3)" />
+          <!-- floor -->
+          <ellipse cx="200" cy="320" rx="280" ry="60" fill="#1f1750" />
+          <!-- floating door / window -->
+          <g transform="translate(40 130) rotate(-8)">
+            <rect width="80" height="120" rx="40" fill="#c89df0" opacity="0.3" />
+            <rect x="6" y="6" width="68" height="108" rx="34" fill="none" stroke="#F4EAD0" stroke-width="1.5" stroke-dasharray="3 4" />
+          </g>
+          <!-- boy + shadow -->
+          <g transform="translate(160 185)">
+            <!-- shadow (taller, weirder) -->
+            <g opacity="0.7">
+              <ellipse cx="60" cy="70" rx="22" ry="5" fill="#0a0820" />
+              <path d="M50 70 q-6 -40 0 -60 q3 -10 14 -10 q12 0 14 10 q6 20 0 60 z" fill="#0a0820" />
+              <circle cx="64" cy="2" r="10" fill="#0a0820" />
+              <!-- spooky long arm -->
+              <path d="M50 25 q-30 -4 -36 18" stroke="#0a0820" stroke-width="6" stroke-linecap="round" fill="none" />
+            </g>
+            <!-- boy -->
+            <ellipse cx="0" cy="65" rx="18" ry="4" fill="#0a0820" opacity="0.4" />
+            <rect x="-12" y="20" width="24" height="40" rx="8" fill="#5d4ad6" />
+            <circle cx="0" cy="6" r="13" fill="#f0d4b0" />
+            <rect x="-10" y="58" width="8" height="14" fill="#3a2a8a" />
+            <rect x="2" y="58" width="8" height="14" fill="#3a2a8a" />
+          </g>
+        </svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-eyebrow">Magia · 5–8 lat</div>
+        <h3>Otto i Cień</h3>
+        <p>Otto ma siedem lat i cień, który po zmroku ożywa. Razem chodzą po krawędzi snu, gdzie rzeczy mają inne reguły.</p>
+        <span class="tile-cta">Poznaj serię <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6" /></svg></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- SERIES 1: MIŚKA — warm cream block -->
+<section class="series-block warm" id="miska" data-screen-label="03 Miska i Ptys">
+  <div class="shell">
+    <div class="series-block-grid">
+      <div>
+        <div class="section-eyebrow">Seria 01 · Codzienność · 3–5 lat</div>
+        <h2>Miśka <em>i Ptyś.</em></h2>
+        <p class="lead">
+          Mała Miśka mieszka z mamą, tatą, kotką Figą i braciszkiem Stefankiem. Wszędzie chodzi z lisem-pluszakiem Ptysiem, który nie mówi magicznie — po prostu jest. Każdy odcinek to jedna codzienna sytuacja: ubieranie się, kłótnia, wizyta u babci, najgorszy dzień. Bez magii. Bez krzyku.
+        </p>
+        <div class="series-meta">
+          <div><strong>15</strong>odcinków · sezon 1</div>
+          <div><strong>10–15</strong>min na odcinek</div>
+          <div><strong>3×</strong>w tygodniu</div>
+          <a class="btn primary meta-cta" href="serie/miska-i-ptys.html">Wszystkie odcinki <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6" /></svg></a>
+        </div>
+        <div class="series-cast">
+          <span class="cast-pill"><span class="av"><img src="img/miska-face.png" alt="" /></span>Miśka, 4 lata</span>
+          <span class="cast-pill"><span class="av"><img src="img/ptys.png" alt="" /></span>Ptyś</span>
+          <span class="cast-pill"><span class="av"><img src="img/figa.png" alt="" /></span>Figa</span>
+          <span class="cast-pill"><span class="av"><img src="img/stefan.png" alt="" /></span>Stefanek</span>
+        </div>
+      </div>
+      <div style="color: var(--brick);">
+        <div class="series-cover" style="border-color: var(--brick);">
+          <img src="img/okladka-v2.png" alt="Miśka i Ptyś — okładka" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERIES 2: BRUNO — forest -->
+<section class="series-block forest" id="bruno" data-screen-label="04 Bruno i Hektor" style="color: rgb(27, 48, 97)">
+  <div class="shell">
+    <div class="series-block-grid reverse">
+      <div style="color:#93c5a8;">
+        <div class="series-cover" style="border-color:#93c5a8; background: #14302a;">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="bcsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a8576" /><stop offset="0.6" stop-color="#1c3a32" /><stop offset="1" stop-color="#0f1f1c" /></linearGradient>
+            </defs>
+            <rect width="400" height="500" fill="url(#bcsky)" />
+            <!-- title strip -->
+            <rect x="40" y="50" width="320" height="60" rx="10" fill="#F4EAD0" opacity="0.95" />
+            <text x="200" y="92" text-anchor="middle" font-family="Fraunces, serif" font-size="36" font-style="italic" fill="#102a26">Bruno i Hektor</text>
+            <!-- forest -->
+            <g opacity="0.5">
+              <path d="M0 380 L40 200 L80 380 Z" fill="#0a1f1a" />
+              <path d="M70 400 L120 180 L170 400 Z" fill="#0a1f1a" />
+              <path d="M220 400 L270 200 L320 400 Z" fill="#0a1f1a" />
+              <path d="M310 400 L360 230 L410 400 Z" fill="#0a1f1a" />
+            </g>
+            <!-- moon -->
+            <circle cx="320" cy="170" r="22" fill="#F4EAD0" opacity="0.7" />
+            <!-- ground -->
+            <ellipse cx="200" cy="510" rx="280" ry="80" fill="#1d3d35" />
+            <!-- dog -->
+            <g transform="translate(150 320)">
+              <ellipse cx="50" cy="55" rx="55" ry="30" fill="#2a1a14" />
+              <circle cx="100" cy="38" r="22" fill="#2a1a14" />
+              <path d="M114 22 L122 8 L128 26 Z" fill="#2a1a14" />
+              <path d="M88 26 L92 12 L102 26 Z" fill="#2a1a14" />
+              <circle cx="108" cy="36" r="2" fill="#F4EAD0" />
+              <rect x="12" y="78" width="8" height="28" fill="#2a1a14" rx="3" />
+              <rect x="62" y="78" width="8" height="28" fill="#2a1a14" rx="3" />
+              <path d="M-8 38 q-16 -2 -12 -22 q4 8 18 8" fill="#2a1a14" />
+            </g>
+            <!-- boy -->
+            <g transform="translate(80 295)">
+              <circle cx="0" cy="0" r="18" fill="#f0d4b0" />
+              <rect x="-3" y="-5" width="6" height="2" fill="#1a1410" />
+              <rect x="-15" y="18" width="30" height="50" rx="8" fill="#c25543" />
+              <rect x="-13" y="66" width="10" height="28" fill="#1a3325" />
+              <rect x="3" y="66" width="10" height="28" fill="#1a3325" />
+              <ellipse cx="-5" cy="98" rx="10" ry="3" fill="#0a1410" />
+              <ellipse cx="9" cy="98" rx="10" ry="3" fill="#0a1410" />
+              <!-- hair -->
+              <path d="M-16 -8 q5 -14 18 -10 q12 -2 14 8 q-8 -4 -16 -2 q-8 0 -16 4 z" fill="#1a1410" />
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <div class="section-eyebrow">Seria 02 · Przygody · 4–7 lat</div>
+        <h2>Bruno <em>i Hektor.</em></h2>
+        <p class="lead">
+          Bruno ma sześć lat i nieprzerwany strumień pytań. Hektor jest ogromnym, niezgrabnym kundlem o sercu z budyniu. Razem łażą po lesie za domem, gubią się w deszczu, znajdują dziwne rzeczy w trawie. To bajki o uczeniu się świata przez błoto, ciekawość i bardzo lojalnego psa.
+        </p>
+        <div class="series-meta">
+          <div><strong>8</strong>odcinków · w produkcji</div>
+          <div><strong>14–18</strong>min na odcinek</div>
+          <div><strong>jesień</strong>2026</div>
+          <a class="btn primary meta-cta" href="serie/bruno-i-hektor.html" style="background:#2f5e4f; color:#F4EAD0; border-color:#2f5e4f;">Wszystkie odcinki <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6" /></svg></a>
+        </div>
+        <div class="series-cast">
+          <span class="cast-pill"><span class="av"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#f0d4b0"/><path d="M3 14 q3 -11 13 -11 q10 0 13 11 q-2 -3 -6 -3 q-7 -2 -13 0 q-4 1 -7 3 z" fill="#3a2515"/><circle cx="11" cy="15" r="1.5" fill="#1a1410"/><circle cx="21" cy="15" r="1.5" fill="#1a1410"/><path d="M12 21 q4 3 8 0" stroke="#1a1410" stroke-width="1.4" fill="none" stroke-linecap="round"/><circle cx="9" cy="19" r="1.5" fill="#e8a896" opacity="0.6"/><circle cx="23" cy="19" r="1.5" fill="#e8a896" opacity="0.6"/></svg></span>Bruno, 6 lat</span>
+          <span class="cast-pill"><span class="av"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#c69b7b"/><ellipse cx="6" cy="11" rx="4" ry="7" fill="#7a4a2c" transform="rotate(-22 6 11)"/><ellipse cx="26" cy="11" rx="4" ry="7" fill="#7a4a2c" transform="rotate(22 26 11)"/><circle cx="11" cy="15" r="1.4" fill="#1a1410"/><circle cx="21" cy="15" r="1.4" fill="#1a1410"/><ellipse cx="16" cy="21" rx="2.5" ry="1.8" fill="#1a1410"/><path d="M14 22 q2 2 4 0" stroke="#1a1410" stroke-width="0.8" fill="none"/></svg></span>Hektor, kundel</span>
+          <span class="cast-pill"><span class="av"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#f0d4b0"/><path d="M5 12 q3 -8 11 -8 q8 0 11 8 q-2 -2 -5 -2 q-6 -1 -12 0 q-3 1 -5 2 z" fill="#bcbcbc"/><circle cx="11" cy="15" r="1.3" fill="#1a1410"/><circle cx="21" cy="15" r="1.3" fill="#1a1410"/><path d="M11 22 q5 2 10 0" stroke="#1a1410" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M10 20 q6 -2 12 0" stroke="#bcbcbc" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></span>Dziadek</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERIES 3: OTTO — midnight -->
+<section class="series-block midnight" id="otto" data-screen-label="05 Otto i Cien" style="background-color: rgb(206, 196, 166); border-color: rgb(31, 41, 68); font-size: 16px">
+  <div class="shell">
+    <div class="series-block-grid">
+      <div>
+        <div class="section-eyebrow">Seria 03 · Magia · 5–8 lat</div>
+        <h2>Otto <em>i Cień.</em></h2>
+        <p class="lead">
+          Kiedy Otto idzie spać, jego cień nie zostaje na ścianie — wstaje, otwiera szufladę i prowadzi go do miejsca, w którym księżyc świeci w środku domu, klucze rosną na drzewach, a smutek można zostawić w słoiku. Surrealistyczne, magiczne historie o tym, że niektóre rzeczy łatwiej zrozumieć przez sen.
+        </p>
+        <div class="series-meta">
+          <div><strong>5</strong>odcinków · pilot</div>
+          <div><strong>16–22</strong>min na odcinek</div>
+          <div><strong>2027</strong>· w pisaniu</div>
+          <a class="btn primary meta-cta" href="serie/otto-i-cien.html" style="background:#c89df0; color:#1a1240; border-color:#c89df0;">Wszystkie odcinki <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6" /></svg></a>
+        </div>
+        <div class="series-cast">
+          <span class="cast-pill"><span class="av"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#f0d4b0"/><path d="M3 14 q3 -11 13 -11 q10 0 13 11 q-2 -3 -6 -3 q-7 -2 -13 0 q-4 1 -7 3 z" fill="#1a1410"/><circle cx="11" cy="15" r="1.4" fill="#1a1410"/><circle cx="21" cy="15" r="1.4" fill="#1a1410"/><ellipse cx="16" cy="21" rx="1.4" ry="0.7" fill="#1a1410"/></svg></span>Otto, 7 lat</span>
+          <span class="cast-pill"><span class="av"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#1a1440"/><circle cx="11" cy="14" r="1.6" fill="#c89df0"/><circle cx="21" cy="14" r="1.6" fill="#c89df0"/><path d="M10 21 q6 4 12 0" stroke="#c89df0" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>Cień</span>
+          <span class="cast-pill"><span class="av"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#f0d4b0"/><path d="M3 13 q3 -10 13 -10 q10 0 13 10 q-2 -2 -5 -2 q-6 -1 -16 0 q-3 1 -5 2 z" fill="#5d4ad6"/><circle cx="11" cy="15" r="1.4" fill="#1a1410"/><circle cx="21" cy="15" r="1.4" fill="#1a1410"/><path d="M12 21 q4 2 8 0" stroke="#1a1410" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>Pani Klucz</span>
+        </div>
+      </div>
+      <div style="color:#c89df0;">
+        <div class="series-cover" style="border-color:#c89df0; background:#0a0820;">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="500" fill="#15103b" />
+            <g fill="#F4EAD0">
+              <circle cx="40" cy="50" r="1.5" />
+              <circle cx="120" cy="100" r="1" />
+              <circle cx="200" cy="60" r="2" />
+              <circle cx="270" cy="120" r="1.2" />
+              <circle cx="340" cy="80" r="1.5" />
+              <circle cx="80" cy="220" r="1" />
+              <circle cx="350" cy="240" r="1.5" />
+              <circle cx="60" cy="160" r="1.5" />
+              <circle cx="170" cy="220" r="1" />
+              <circle cx="320" cy="190" r="1" />
+              <circle cx="240" cy="280" r="1.3" />
+              <circle cx="100" cy="320" r="1" />
+            </g>
+            <!-- title -->
+            <rect x="60" y="60" width="280" height="50" rx="8" fill="#c89df0" opacity="0.92" />
+            <text x="200" y="95" text-anchor="middle" font-family="Fraunces, serif" font-size="32" font-style="italic" fill="#1a1240">Otto i Cień</text>
+            <!-- big moon -->
+            <defs>
+              <radialGradient id="m3moon" cx="0.3" cy="0.3" r="0.7"><stop offset="0" stop-color="#F4EAD0" /><stop offset="1" stop-color="#c89df0" /></radialGradient>
+            </defs>
+            <circle cx="290" cy="200" r="60" fill="url(#m3moon)" />
+            <!-- floating door -->
+            <g transform="translate(50 230) rotate(-6)">
+              <rect width="90" height="140" rx="45" fill="#c89df0" opacity="0.25" />
+              <rect x="6" y="6" width="78" height="128" rx="39" fill="none" stroke="#F4EAD0" stroke-width="1.5" stroke-dasharray="3 5" />
+              <circle cx="68" cy="70" r="3" fill="#F4EAD0" />
+            </g>
+            <!-- floor wave -->
+            <path d="M0 420 Q 100 380, 200 420 T 400 420 L 400 500 L 0 500 Z" fill="#1f1750" />
+            <!-- boy + shadow -->
+            <g transform="translate(180 320)">
+              <g opacity="0.85">
+                <ellipse cx="65" cy="120" rx="28" ry="6" fill="#0a0820" />
+                <path d="M50 120 q-6 -50 0 -75 q3 -10 14 -10 q12 0 14 10 q6 25 0 75 z" fill="#0a0820" />
+                <circle cx="64" cy="32" r="13" fill="#0a0820" />
+                <path d="M50 60 q-30 -4 -38 22" stroke="#0a0820" stroke-width="7" stroke-linecap="round" fill="none" />
+                <path d="M50 60 q-44 4 -50 -16" stroke="#0a0820" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.6" />
+              </g>
+              <g>
+                <ellipse cx="0" cy="120" rx="20" ry="5" fill="#0a0820" opacity="0.5" />
+                <rect x="-13" y="55" width="26" height="50" rx="8" fill="#5d4ad6" />
+                <circle cx="0" cy="38" r="15" fill="#f0d4b0" />
+                <path d="M-15 30 q5 -16 18 -12 q14 -2 16 10 q-8 -4 -18 -2 q-8 0 -16 4 z" fill="#1a1410" />
+                <rect x="-10" y="103" width="8" height="14" fill="#3a2a8a" />
+                <rect x="2" y="103" width="8" height="14" fill="#3a2a8a" />
+                <circle cx="-3" cy="36" r="1.2" fill="#1a1410" />
+                <circle cx="4" cy="36" r="1.2" fill="#1a1410" />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O SERII -->
+<section class="section shell" id="o-serii" data-screen-label="06 Filozofia">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">Filozofia studia</div>
+      <h2>Audio, które <em>nie krzyczy.</em><br />Świat, który nie udaje.</h2>
+    </div>
+    <p class="section-lead">
+      Trzy serie różnią się tonem, ale wychodzą z tego samego założenia: dziecko zasługuje na coś, co nie traktuje go jak odbiornika reklamy ani jak puste naczynie do napełnienia faktami.
+    </p>
+  </div>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="glyph"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12 q4 -8 14 -4 q-6 8 -14 4 z M5 12 v6" /></svg></div>
+      <h3>Slow childhood</h3>
+      <p>Spokojne tempo, długie, miękkie zdania. Bajki działają wyciszająco — zaprojektowane przeciw przebodźcowaniu.</p>
+    </div>
+    <div class="about-card">
+      <div class="glyph"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 4 q4 6 0 16 q-4 -10 0 -16 z M12 12 v8" /></svg></div>
+      <h3>Małe sprawy</h3>
+      <p>Każdy odcinek to jedna codzienna sytuacja. Strach, złość, niecierpliwość, tęsknota — pokazane jako historia, nie jako lekcja.</p>
+    </div>
+    <div class="about-card">
+      <div class="glyph"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 21 s-7 -4 -7 -10 a4 4 0 0 1 7 -2 a4 4 0 0 1 7 2 c0 6 -7 10 -7 10 z" /></svg></div>
+      <h3>Dla rodziców też</h3>
+      <p>Tempo, słownictwo i konstrukcja zdań dobrane tak, żeby dorosły nie zasypiał z nudów ani nie wzdrygał się od kicz-słownictwa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- O MNIE -->
+<section class="section shell" id="o-mnie" data-screen-label="07 O mnie">
+  <div class="aboutme">
+    <div class="aboutme-photo">
+      <div class="aboutme-tape"></div>
+      <div class="photo-slot" style="padding:0; background:none; border:none;">
+        <img src="img/tata-corka.png" alt="Michał z córką" style="width:100%; height:100%; object-fit:cover; display:block; border-radius: inherit;" />
+      </div>
+    </div>
+    <div class="aboutme-body">
+      <div class="section-eyebrow">O mnie</div>
+      <h2>Dlaczego <em>to robię.</em></h2>
+      <p>Sam jestem tatą pięciolatki. Studio Bajek powstało, bo wieczorami szukałem dla niej czegoś spokojnego. Chciałem stworzyć bohaterów, którzy będą nie tylko bawić, ale i uczyć oraz zostaną z nami na dłużej. A przy okazji da się tego słuchać, będąc dorosłym.</p>
+      <blockquote class="aboutme-quote" style="height: 175.5px">
+        <p>Każdy odcinek tworzę z myślą o tym, jak zabrzmi w jej pokoju, kiedy gasimy światło. Moja córka jest pierwszą, najsurowszą testerką każdej bajki.</p>
+        <p class="attribution">
+</p>
+      </blockquote>
+      <div class="aboutme-meta">
+        <div><strong>2026</strong>start studia</div>
+        <div><strong>1</strong>najsurowsza testerka</div>
+        <div><strong>3</strong>serie w produkcji</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="shell footer-row">
+    <div style="max-width: 320px;">
+      <a href="#top" class="brand brand-link" aria-label="Studio Bajek">
+        <img class="brand-mark" src="img/logo-mark.png" alt="" style="width:72px;height:72px;object-fit:cover;object-position:center 62%;transform:scale(2.6);transform-origin:center;" />
+        <span class="brand-word">
+          <span class="brand-word-top">Studio</span>
+          <span class="brand-word-bot">Bajek<em>.</em></span>
+        </span>
+      </a>
+      <p style="margin-top: 16px; font-size: 14px; color: var(--ink-soft);">
+        Ciepłe bajki audio dla dzieci. Małe sprawy, wielkie emocje, odrobina magii.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h5>Serie</h5>
+      <a href="serie/miska-i-ptys.html">Miśka i Ptyś</a>
+      <a href="serie/bruno-i-hektor.html">Bruno i Hektor</a>
+      <a href="serie/otto-i-cien.html">Otto i Cień</a>
+    </div>
+    <div class="footer-col">
+      <h5>Słuchaj</h5>
+      <a href="https://open.spotify.com/show/miskaiptys" target="_blank" rel="noopener">Spotify</a>
+      <a href="#">Apple Podcasts</a>
+      <a href="https://youtube.com/@miskaiptys" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <div class="footer-col">
+      <h5>Kontakt</h5>
+      <a href="mailto:czesc@studiobajek.pl">czesc@studiobajek.pl</a>
+      <a href="#">Instagram</a>
+      <a href="#">Współpraca</a>
+    </div>
+  </div>
+  <div class="shell footer-bottom">
+    <div>© 2025 Studio Bajek · studiobajek.pl</div>
+    <div>Polityka prywatności · Regulamin</div>
+  </div>
+</footer>
+
+<!-- Logo switcher -->
+<div class="font-switcher" style="bottom: 76px;">
+  <span class="label">Logo</span>
+  <button data-logo="A" class="active">A · Słuchawki</button>
+  <button data-logo="B">B · Dymek</button>
+  <button data-logo="C">C · Play</button>
+</div>
+
+<!-- Font switcher (variant preview) -->
+<div class="font-switcher">
+  <span class="label">Font</span>
+  <button data-font="DM Sans" class="active">DM Sans</button>
+  <button data-font="Poppins">Poppins</button>
+  <button data-font="Sora">Nexa</button>
+  <button data-font="Montserrat">Montserrat</button>
+</div>
+<script>
+  document.querySelectorAll('.font-switcher button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const font = btn.dataset.font;
+      document.documentElement.style.setProperty('--display', `"${font}", system-ui, sans-serif`);
+      document.documentElement.style.setProperty('--body', `"${font}", system-ui, sans-serif`);
+      document.documentElement.style.setProperty('--hand', `"${font}", system-ui, sans-serif`);
+      document.querySelectorAll('.font-switcher button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+
+<script>
+  const logoVariants = {
+    A: '<img class="brand-mark" src="img/logo-mark.png" alt="" style="width:%Spx;height:%Spx;object-fit:contain;" />',
+    B: '<svg class="brand-mark" width="%S" height="%S" viewBox="0 0 44 44" fill="none"><path d="M5 13 q0 -8 8 -8 h18 q8 0 8 8 v9 q0 8 -8 8 h-12 l-8 7 v-7 q-6 -1 -6 -8 z" fill="#1F2A44"/><path d="M22 11 l1.7 3.5 l3.5 1.7 l-3.5 1.7 l-1.7 3.5 l-1.7 -3.5 l-3.5 -1.7 l3.5 -1.7 z" fill="#F2B23A"/></svg>',
+    C: '<svg class="brand-mark" width="%S" height="%S" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" fill="#C25543"/><path d="M17 13.5 L32 22 L17 30.5 Z" fill="#F6EBD2"/></svg>'
+  };
+  function applyLogo(key){
+    document.querySelectorAll('.brand-link').forEach(link => {
+      const size = link.closest('.footer') ? 96 : 88;
+      const oldMark = link.querySelector('.brand-mark');
+      if (oldMark) oldMark.outerHTML = logoVariants[key].replaceAll('%S', size);
+    });
+  }
+  document.querySelectorAll('[data-logo]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyLogo(btn.dataset.logo);
+      document.querySelectorAll('[data-logo]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
