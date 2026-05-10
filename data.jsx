@@ -10,8 +10,8 @@ const EPISODES = [
     date: "pon · 4 maja",
     cover: "img/ep15.png",
     tag: "Nowy",
-    spotify: "https://open.spotify.com/show/miskaiptys",
-    youtube: "https://youtube.com/@miskaiptys",
+    spotify: "https://open.spotify.com/show/033esCzhRAsF0y5Y34pSUL",
+    youtube: "https://www.youtube.com/@StudioBajek",
   },
   {
     id: "ep14",
@@ -21,8 +21,8 @@ const EPISODES = [
     duration: "12 min",
     date: "pią · 1 maja",
     cover: "img/ep14.png",
-    spotify: "https://open.spotify.com/show/miskaiptys",
-    youtube: "https://youtube.com/@miskaiptys",
+    spotify: "https://open.spotify.com/show/033esCzhRAsF0y5Y34pSUL",
+    youtube: "https://www.youtube.com/@StudioBajek",
   },
   {
     id: "ep4",
@@ -32,8 +32,8 @@ const EPISODES = [
     duration: "14 min",
     date: "śr · 29 kwi",
     cover: "img/ep4.png",
-    spotify: "https://open.spotify.com/show/miskaiptys",
-    youtube: "https://youtube.com/@miskaiptys",
+    spotify: "https://open.spotify.com/show/033esCzhRAsF0y5Y34pSUL",
+    youtube: "https://www.youtube.com/@StudioBajek",
   },
   {
     id: "ep3",
@@ -43,8 +43,8 @@ const EPISODES = [
     duration: "11 min",
     date: "pon · 27 kwi",
     cover: "img/ep3.png",
-    spotify: "https://open.spotify.com/show/miskaiptys",
-    youtube: "https://youtube.com/@miskaiptys",
+    spotify: "https://open.spotify.com/show/033esCzhRAsF0y5Y34pSUL",
+    youtube: "https://www.youtube.com/@StudioBajek",
   },
   {
     id: "ep1",
@@ -54,8 +54,8 @@ const EPISODES = [
     duration: "12 min",
     date: "pią · 24 kwi",
     cover: "img/ep1.png",
-    spotify: "https://open.spotify.com/show/miskaiptys",
-    youtube: "https://youtube.com/@miskaiptys",
+    spotify: "https://open.spotify.com/show/033esCzhRAsF0y5Y34pSUL",
+    youtube: "https://www.youtube.com/@StudioBajek",
   },
 ];
 
