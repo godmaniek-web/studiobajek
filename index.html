@@ -639,7 +639,11 @@
     .hero.dark-band .lead-block { max-width: 1080px !important; margin: 0 auto !important; }
     .hero.dark-band h1 {
       color: #FBF3E1 !important;
-      font-size: clamp(48px, 7.4vw, 104px) !important;
+      font-size: clamp(40px, 5.4vw, 78px) !important;
+      text-wrap: balance;
+      max-width: 18ch;
+      margin-left: auto;
+      margin-right: auto;
       line-height: 1.0 !important;
       letter-spacing: -0.035em !important;
       font-weight: 800 !important;
@@ -774,8 +778,22 @@
         gap: 32px !important;
       }
 
+      /* Hero H1 — mniejszy i czyściej łamany */
+      .hero.dark-band h1 {
+        font-size: clamp(30px, 8.6vw, 40px) !important;
+        line-height: 1.05 !important;
+        letter-spacing: -0.025em !important;
+        text-wrap: balance;
+      }
+      .hero.dark-band { padding: 56px 22px 64px !important; }
+      .hero.dark-band p { font-size: 15px !important; line-height: 1.55 !important; }
+
       /* 4. Mniej powietrza między sekcjami */
       .section { padding: 56px 28px !important; }
+      #o-mnie.section { padding-top: 32px !important; }
+      .aboutme { padding: 32px 24px 72px !important; }
+      .aboutme-photo { margin-top: -16px !important; }
+      .aboutme-quote { margin-bottom: 0 !important; }
       .section#serie { padding-top: 40px !important; padding-bottom: 56px !important; }
       .series-block { padding: 56px 0 !important; }
       .series-block .shell { padding-top: 0 !important; padding-bottom: 0 !important; }
@@ -783,6 +801,18 @@
       .hero.dark-band { padding: 72px 24px 80px !important; }
       .closing-quote { padding: 64px 22px 64px !important; }
       .aboutme { padding: 56px 24px !important; }
+
+      /* Miska cover — wyśrodkowana jak inne na mobile */
+      .series-block.warm .series-cover {
+        max-width: 360px !important;
+        margin: 0 auto !important;
+      }
+
+      /* Filozofia — ikona + nagłówek w jednym rzędzie */
+      .about-card { display: grid !important; grid-template-columns: auto 1fr !important; column-gap: 16px !important; row-gap: 8px !important; align-items: center !important; padding: 20px 0 !important; }
+      .about-card .glyph { grid-row: 1; grid-column: 1; margin: 0 !important; }
+      .about-card h3 { grid-row: 1; grid-column: 2; margin: 0 !important; }
+      .about-card p { grid-row: 2; grid-column: 1 / -1; margin: 0 !important; }
 
       /* 5. Filozofia — about-grid 1 kolumna na mobile */
       .about-grid {
@@ -864,7 +894,7 @@
       <a href="#serie" data-chapter="serie"><span class="ch-num">01</span><span class="ch-label">Bajki</span></a>
       <a href="#o-serii" data-chapter="o-serii"><span class="ch-num">02</span><span class="ch-label">Filozofia</span></a>
       <a href="#o-mnie" data-chapter="o-mnie"><span class="ch-num">03</span><span class="ch-label">O mnie</span></a>
-      <a href="/cdn-cgi/l/email-protection#d2b1a8b7a1b192a1a6a7b6bbbdb0b3b8b7b9fca2be"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
+      <a href="/cdn-cgi/l/email-protection#c7a4bda2b4a487b4b3b2a3aea8a5a6ada2ace9b7ab"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
     </div>
     <div class="nav-actions">
       <a class="btn primary" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z"></path></svg></a>
@@ -875,7 +905,7 @@
       <a href="#serie" class="md-link"><span class="ch-num">01</span><span class="ch-label">Bajki</span></a>
       <a href="#o-serii" class="md-link"><span class="ch-num">02</span><span class="ch-label">Filozofia</span></a>
       <a href="#o-mnie" class="md-link"><span class="ch-num">03</span><span class="ch-label">O mnie</span></a>
-      <a href="/cdn-cgi/l/email-protection#ddbea7b8aebe9daea9a8b9b4b2bfbcb7b8b6f3adb1" class="md-link"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
+      <a href="/cdn-cgi/l/email-protection#7f1c051a0c1c3f0c0b0a1b16101d1e151a14510f13" class="md-link"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
       <a class="btn primary md-cta" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z"></path></svg></a>
     </div>
   </div>
@@ -1081,7 +1111,7 @@
 </section>
 
 <!-- O MNIE -->
-<section class="section shell" id="o-mnie" data-screen-label="07 O mnie" style="height: 960.766px">
+<section class="section shell" id="o-mnie" data-screen-label="07 O mnie">
   <div class="aboutme">
     <div class="aboutme-photo">
       <div class="aboutme-tape"></div>
@@ -1132,7 +1162,7 @@
     </div>
     <div class="footer-col">
       <h5>Napisz do nas</h5>
-      <a href="/cdn-cgi/l/email-protection#67041d02140427141312030e0805060d020c49170b"><span class="__cf_email__" data-cfemail="ec8f96899f8fac9f98998885838e8d868987c29c80">[email&#160;protected]</span></a>
+      <a href="/cdn-cgi/l/email-protection#cdaeb7a8beaeebeefbf9f6beb9b8a9a4a2afaca7a8a6e3bda1" class="js-email" data-u="czesc" data-d="studiobajek.pl">czesc<span>&#64;</span>studiobajek.pl</a>
       <a href="#">Instagram</a>
       <a href="#">Współpraca</a>
     </div>
