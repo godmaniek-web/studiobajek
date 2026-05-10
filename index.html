@@ -240,6 +240,9 @@
     }
     .photo-slot small { color: var(--ink-mute); }
 
+    /* Section lead — ujednolicone leady na całej stronie */
+    .section-lead { font-size: clamp(18px, 2.2vw, 24px); line-height: 1.55; font-weight: 500; color: var(--ink-soft); }
+
     /* Footer */
     .footer { background: var(--paper-warm); border-top-color: var(--line); }
     .footer-col h5 { color: var(--brick); }
@@ -803,9 +806,14 @@
       .aboutme { padding: 56px 24px !important; }
 
       /* Miska cover — wyśrodkowana jak inne na mobile */
+      .series-block.warm .series-block-grid > div:first-child,
+      .series-block.warm .series-block-grid > div:last-child {
+        text-align: center !important;
+      }
       .series-block.warm .series-cover {
         max-width: 360px !important;
         margin: 0 auto !important;
+        display: block !important;
       }
 
       /* Filozofia — ikona + nagłówek w jednym rzędzie */
@@ -861,7 +869,7 @@
         align-items: center !important;
         text-align: center !important;
         gap: 18px !important;
-        padding: 16px 24px 20px !important;
+        padding: 4px 24px 16px !important;
       }
       .footer .footer-row > div:first-child {
         flex-direction: column !important;
@@ -913,7 +921,7 @@
       <a href="#serie" data-chapter="serie"><span class="ch-num">01</span><span class="ch-label">Bajki</span></a>
       <a href="#o-serii" data-chapter="o-serii"><span class="ch-num">02</span><span class="ch-label">Filozofia</span></a>
       <a href="#o-mnie" data-chapter="o-mnie"><span class="ch-num">03</span><span class="ch-label">O mnie</span></a>
-      <a href="/cdn-cgi/l/email-protection#492a332c3a2a093a3d3c2d20262b28232c22673925"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
+      <a href="/cdn-cgi/l/email-protection#3c5f46594f5f7c4f48495855535e5d565957124c50"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
     </div>
     <div class="nav-actions">
       <a class="btn primary" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z"></path></svg></a>
@@ -924,7 +932,7 @@
       <a href="#serie" class="md-link"><span class="ch-num">01</span><span class="ch-label">Bajki</span></a>
       <a href="#o-serii" class="md-link"><span class="ch-num">02</span><span class="ch-label">Filozofia</span></a>
       <a href="#o-mnie" class="md-link"><span class="ch-num">03</span><span class="ch-label">O mnie</span></a>
-      <a href="/cdn-cgi/l/email-protection#50332a3523331023242534393f32313a353b7e203c" class="md-link"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
+      <a href="/cdn-cgi/l/email-protection#93f0e9f6e0f0d3e0e7e6f7fafcf1f2f9f6f8bde3ff" class="md-link"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
       <a class="btn primary md-cta" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z"></path></svg></a>
     </div>
   </div>
@@ -948,7 +956,7 @@
         </a>
       </span>
     </div>
-    <p style="font-size: clamp(22px, 2.4vw, 30px); margin: 8px auto 0; max-width: 760px; line-height: 1.5; font-weight: 500;">
+    <p class="section-lead" style="margin: 8px auto 0; max-width: 760px; text-align: center;">
       Cześć, jestem <span class="brick-text">Michał</span>. Uwielbiam być tatą, dlatego stworzyłem serię bajek, których pierwszą i najbardziej wymagającą testerką jest moja córka.
     </p>
     <div class="hero-ctas" style="justify-content:center; margin-top: 44px;">
@@ -1181,7 +1189,7 @@
     </div>
     <div class="footer-col">
       <h5>Napisz do nas</h5>
-      <a href="/cdn-cgi/l/email-protection#bcdfc6d9cfdf9a9f8a8887cfc8c9d8d5d3deddd6d9d792ccd0" class="js-email" data-u="czesc" data-d="studiobajek.pl">czesc<span>&#64;</span>studiobajek.pl</a>
+      <a href="/cdn-cgi/l/email-protection#9efde4fbedfdb8bda8aaa5edeaebfaf7f1fcfff4fbf5b0eef2" class="js-email" data-u="czesc" data-d="studiobajek.pl">czesc<span>&#64;</span>studiobajek.pl</a>
       <a href="#">Instagram</a>
       <a href="#">Współpraca</a>
     </div>
