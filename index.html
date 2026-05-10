@@ -793,7 +793,8 @@
 
       /* 4. Mniej powietrza między sekcjami */
       .section { padding: 56px 28px !important; }
-      #o-mnie.section { padding-top: 32px !important; }
+      #o-serii.section { padding-bottom: 24px !important; }
+      #o-mnie.section { padding-top: 16px !important; }
       .aboutme { padding: 32px 24px 72px !important; }
       .aboutme-photo { margin-top: -16px !important; }
       .aboutme-quote { margin-bottom: 0 !important; }
@@ -806,13 +807,16 @@
       .aboutme { padding: 56px 24px !important; }
 
       /* Miska cover — wyśrodkowana jak inne na mobile */
-      .series-block.warm .series-block-grid > div:first-child,
-      .series-block.warm .series-block-grid > div:last-child {
+      #miska .series-block-grid,
+      #miska .series-block-grid > div {
         text-align: center !important;
+        display: block !important;
       }
-      .series-block.warm .series-cover {
+      #miska .series-cover {
         max-width: 360px !important;
-        margin: 0 auto !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
         display: block !important;
       }
 
@@ -863,7 +867,10 @@
       }
 
       /* 7. Stopka — jednolite ułożenie */
+      .footer { padding-top: 0 !important; margin-top: 0 !important; }
       .footer .footer-row {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
@@ -921,7 +928,7 @@
       <a href="#serie" data-chapter="serie"><span class="ch-num">01</span><span class="ch-label">Bajki</span></a>
       <a href="#o-serii" data-chapter="o-serii"><span class="ch-num">02</span><span class="ch-label">Filozofia</span></a>
       <a href="#o-mnie" data-chapter="o-mnie"><span class="ch-num">03</span><span class="ch-label">O mnie</span></a>
-      <a href="/cdn-cgi/l/email-protection#3c5f46594f5f7c4f48495855535e5d565957124c50"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
+      <a href="/cdn-cgi/l/email-protection#27445d42544467545352434e4845464d424c09574b"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
     </div>
     <div class="nav-actions">
       <a class="btn primary" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z"></path></svg></a>
@@ -932,7 +939,7 @@
       <a href="#serie" class="md-link"><span class="ch-num">01</span><span class="ch-label">Bajki</span></a>
       <a href="#o-serii" class="md-link"><span class="ch-num">02</span><span class="ch-label">Filozofia</span></a>
       <a href="#o-mnie" class="md-link"><span class="ch-num">03</span><span class="ch-label">O mnie</span></a>
-      <a href="/cdn-cgi/l/email-protection#93f0e9f6e0f0d3e0e7e6f7fafcf1f2f9f6f8bde3ff" class="md-link"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
+      <a href="/cdn-cgi/l/email-protection#afccd5cadcccefdcdbdacbc6c0cdcec5cac481dfc3" class="md-link"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
       <a class="btn primary md-cta" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z"></path></svg></a>
     </div>
   </div>
@@ -1108,7 +1115,7 @@
 </section>
 
 <!-- O SERII -->
-<section class="section shell" id="o-serii" data-screen-label="06 Filozofia">
+<section class="section shell" id="o-serii" data-screen-label="06 Filozofia" style="padding: 110px 28px 10px">
   <div class="section-head">
     <div>
       <div class="section-eyebrow">Filozofia studia</div>
@@ -1138,7 +1145,7 @@
 </section>
 
 <!-- O MNIE -->
-<section class="section shell" id="o-mnie" data-screen-label="07 O mnie">
+<section class="section shell" id="o-mnie" data-screen-label="07 O mnie" style="padding: 40px 28px 110px">
   <div class="aboutme">
     <div class="aboutme-photo">
       <div class="aboutme-tape"></div>
@@ -1165,7 +1172,7 @@
 </section>
 
 <!-- CYTAT ZAMYKAJĄCY -->
-<section class="closing-quote" data-screen-label="08 Zakończenie">
+<section class="closing-quote" data-screen-label="08 Zakończenie" style="height: 601.547px; padding: 150px 28px 160px">
   <svg class="quote-mark" viewBox="0 0 100 80" fill="currentColor" aria-hidden="true">
     <path d="M22 8 C10 12 4 24 4 40 v32 h32 V40 H20 c0 -10 4 -18 14 -22 z M64 8 C52 12 46 24 46 40 v32 h32 V40 H62 c0 -10 4 -18 14 -22 z"></path>
   </svg>
@@ -1189,7 +1196,7 @@
     </div>
     <div class="footer-col">
       <h5>Napisz do nas</h5>
-      <a href="/cdn-cgi/l/email-protection#9efde4fbedfdb8bda8aaa5edeaebfaf7f1fcfff4fbf5b0eef2" class="js-email" data-u="czesc" data-d="studiobajek.pl">czesc<span>&#64;</span>studiobajek.pl</a>
+      <a href="/cdn-cgi/l/email-protection#70130a150313565346444b03040514191f12111a151b5e001c" class="js-email" data-u="czesc" data-d="studiobajek.pl">czesc<span>&#64;</span>studiobajek.pl</a>
       <a href="#">Instagram</a>
       <a href="#">Współpraca</a>
     </div>
