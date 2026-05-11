@@ -184,6 +184,24 @@
     .hero-platforms .logos svg { height: 18px; width: auto; display: block; }
     .hero-platforms .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-mute); }
 
+    /* Hero illustration (under CTAs) */
+    .hero-illustration {
+      margin: 56px auto 0;
+      max-width: 1100px;
+      width: 100%;
+    }
+    .hero-illustration img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 0 30px 60px -28px rgba(0,0,0,0.55), 0 10px 24px -12px rgba(0,0,0,0.35);
+    }
+    @media (max-width: 760px) {
+      .hero-illustration { margin-top: 40px; }
+      .hero-illustration img { border-radius: 12px; box-shadow: 0 18px 36px -20px rgba(0,0,0,0.5); }
+    }
+
     /* Section / chunks */
     .section { padding: 110px 28px; }
     .platforms { display: none; }
@@ -646,7 +664,7 @@
       max-width: none !important;
       width: 100%;
       margin: 0 !important;
-      padding: 100px 28px 130px !important;
+      padding: 100px 28px 70px !important;
     }
     .hero.dark-band .lead-block { max-width: 1080px !important; margin: 0 auto !important; }
     .hero.dark-band h1 {
@@ -797,7 +815,7 @@
         letter-spacing: -0.025em !important;
         text-wrap: balance;
       }
-      .hero.dark-band { padding: 56px 22px 64px !important; }
+      .hero.dark-band { padding: 56px 22px 36px !important; }
       .hero.dark-band p { font-size: 15px !important; line-height: 1.55 !important; }
 
       /* 4. Mniej powietrza między sekcjami */
@@ -811,7 +829,7 @@
       .series-block { padding: 56px 0 !important; }
       .series-block .shell { padding-top: 0 !important; padding-bottom: 0 !important; }
       .hero { padding-bottom: 24px !important; }
-      .hero.dark-band { padding: 72px 24px 80px !important; }
+      .hero.dark-band { padding: 72px 24px 44px !important; }
       .closing-quote { padding: 64px 22px 64px !important; }
       .aboutme { padding: 56px 24px !important; }
 
@@ -937,7 +955,7 @@
       <a href="#serie" data-chapter="serie"><span class="ch-num">01</span><span class="ch-label">Bajki</span></a>
       <a href="#o-serii" data-chapter="o-serii"><span class="ch-num">02</span><span class="ch-label">Filozofia</span></a>
       <a href="#o-mnie" data-chapter="o-mnie"><span class="ch-num">03</span><span class="ch-label">O mnie</span></a>
-      <a href="mailto:czesc@studiobajek.pl"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
+      <a href="/cdn-cgi/l/email-protection#0e6d746b7d6d4e7d7a7b6a67616c6f646b65207e62"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
     </div>
     <div class="nav-actions">
       <a class="btn primary" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z"></path></svg></a>
@@ -948,7 +966,7 @@
       <a href="#serie" class="md-link"><span class="ch-num">01</span><span class="ch-label">Bajki</span></a>
       <a href="#o-serii" class="md-link"><span class="ch-num">02</span><span class="ch-label">Filozofia</span></a>
       <a href="#o-mnie" class="md-link"><span class="ch-num">03</span><span class="ch-label">O mnie</span></a>
-      <a href="mailto:czesc@studiobajek.pl" class="md-link"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
+      <a href="/cdn-cgi/l/email-protection#15766f70667655666160717c7a77747f707e3b6579" class="md-link"><span class="ch-num">04</span><span class="ch-label">Kontakt</span></a>
       <a class="btn primary md-cta" href="#serie">Posłuchaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 4 v16 l14 -8 z"></path></svg></a>
     </div>
   </div>
@@ -972,12 +990,13 @@
         </a>
       </span>
     </div>
-    <p class="section-lead" style="margin: 8px auto 0; max-width: 760px; text-align: center;">
-      Cześć, jestem <span class="brick-text">Michał</span>. Uwielbiam być tatą, dlatego stworzyłem serię bajek, których pierwszą i najbardziej wymagającą testerką jest moja córka.
-    </p>
+    <p class="section-lead" style="margin: 8px auto 0; max-width: 760px; text-align: center;">Cześć, jestem Michał. Uwielbiam być tatą, dlatego stworzyłem serię bajek, których pierwszą i najbardziej wymagającą testerką jest moja córka. Codzienność, podwórkowe przygody i odrobina magii. Każda seria ma własny ton, ale tempo, język i miękkość są te same.</p>
     <div class="hero-ctas" style="justify-content:center; margin-top: 44px;">
       <a class="btn primary lg" href="#serie">Poznaj nasze bajki <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12 h14 M13 6 l6 6 -6 6"></path></svg></a>
       <a class="btn lg" href="#o-mnie">O mnie</a>
+    </div>
+    <div class="hero-illustration">
+      <img src="img/hero-illustration.png" alt="Studio Bajek — ilustracja z dziećmi, zwierzętami i bohaterami bajek" loading="eager" decoding="async">
     </div>
   </div>
 </section>
@@ -990,8 +1009,7 @@
       <h2>Trzy zupełnie różne światy.<br><em>Jeden spokojny rytm.</em></h2>
     </div>
     <p class="section-lead">
-      Codzienność, podwórkowe przygody i odrobina magii. Każda seria ma własny ton, ale wszystkie wychodzą z tego samego studia — więc tempo, język i miękkość są te same.
-    </p>
+</p>
   </div>
 
   <div class="series-tiles">
@@ -1205,7 +1223,7 @@
     </div>
     <div class="footer-col">
       <h5>Napisz do nas</h5>
-      <a href="mailto:czesc&#64;studiobajek.pl" class="js-email" data-u="czesc" data-d="studiobajek.pl">czesc<span>&#64;</span>studiobajek.pl</a>
+      <a href="/cdn-cgi/l/email-protection#b8dbc2ddcbdb9e9b8e8c83cbcccddcd1d7dad9d2ddd396c8d4" class="js-email" data-u="czesc" data-d="studiobajek.pl">czesc<span>&#64;</span>studiobajek.pl</a>
       <a href="#">Instagram</a>
       <a href="#">Współpraca</a>
     </div>
@@ -1217,7 +1235,7 @@
 </footer>
 
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Auto-active chapter link based on scroll position
   (function () {
     const links = document.querySelectorAll('.nav-chapters a[data-chapter]');
